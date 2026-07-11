@@ -1,0 +1,88 @@
+table Return_Data
+	lineageTag: 751dd654-81ea-428d-819a-c695fe24293d
+
+	measure 'Quantity Returned' = CALCULATE(SUM(Return_Data[quantity]))
+		formatString: #,0
+		lineageTag: 11c13660-7b43-4e23-b23a-7f1fcd26929d
+
+		annotation PBI_FormatHint = {"isDecimal":true}
+
+	measure 'Total Returns' = COUNTROWS(Return_Data)
+		formatString: #,0
+		lineageTag: a6ad7d06-3f00-499c-9a9e-71324aef2454
+
+	measure 'Return Rate' = [Quantity Returned] / [Quantity Sold]
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: 75e2d444-76ba-4272-9409-48aae7df8ce8
+
+	measure 'All Returns' = CALCULATE([Total Returns], ALL(Return_Data))
+		formatString: #,0
+		lineageTag: 7e7a615c-b137-45f2-a6e0-7ab936255e4f
+
+	measure 'Last Month Returns' = CALCULATE([Total Returns],DATEADD('Calendar'[date],-1,MONTH))
+		formatString: \$#,0.###############;(\$#,0.###############);\$#,0.###############
+		lineageTag: 470d5ca1-d33f-491f-8f9a-d70156b36016
+
+	column return_date
+		dataType: dateTime
+		isHidden
+		formatString: d/m/yyyy
+		lineageTag: 18c9116b-8a25-4737-add5-838e1b8ebdf8
+		summarizeBy: none
+		sourceColumn: return_date
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+		annotation PBI_FormatHint = {"isCustom":true}
+
+	column product_id
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 566b13e8-96cc-4fde-ab76-f8db39842e4a
+		summarizeBy: none
+		sourceColumn: product_id
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column store_id
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 5774a664-217c-480f-aebc-cfc5dff3ed67
+		summarizeBy: none
+		sourceColumn: store_id
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column quantity
+		dataType: int64
+		formatString: 0
+		lineageTag: c58aab8b-d234-4770-8aa6-edd773d545e9
+		summarizeBy: sum
+		sourceColumn: quantity
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Return_Data = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents("C:\Users\NatalijaSuharevska\OneDrive - Direct Medics Ltd\Desktop\Power BI_Dev_Maven Market\MavenMarket_Returns_1997-1998.csv"),[Delimiter=",", Columns=4, Encoding=1252, QuoteStyle=QuoteStyle.None]),
+				    #"Promoted Headers" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+				    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"return_date", type date}, {"product_id", Int64.Type}, {"store_id", Int64.Type}, {"quantity", Int64.Type}})
+				in
+				    #"Changed Type"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

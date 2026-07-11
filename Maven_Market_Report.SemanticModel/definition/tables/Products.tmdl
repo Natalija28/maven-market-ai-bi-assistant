@@ -1,0 +1,144 @@
+table Products
+	lineageTag: 85f6523c-dc4a-4558-8259-c24a7a451bc3
+
+	measure 'Unique Products' = DISTINCTCOUNT(Products[product_name])
+		formatString: #,0
+		lineageTag: c8f42472-90bf-4970-bcd8-5240c34803f8
+
+	column product_id
+		dataType: int64
+		formatString: 0
+		lineageTag: 1a0da7a6-d55c-4332-b2cb-5d74ac6af352
+		summarizeBy: none
+		sourceColumn: product_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column product_brand
+		dataType: string
+		lineageTag: c94b444f-71eb-466e-89c2-7b70eb146da3
+		summarizeBy: none
+		sourceColumn: product_brand
+
+		annotation SummarizationSetBy = Automatic
+
+	column product_name
+		dataType: string
+		lineageTag: 4182ed57-8909-4fe6-91e3-0b20d7826546
+		summarizeBy: none
+		sourceColumn: product_name
+
+		annotation SummarizationSetBy = Automatic
+
+	column product_sku
+		dataType: string
+		lineageTag: 2fb1e7da-5e9c-47ec-9f37-922a95a9bdcd
+		summarizeBy: none
+		sourceColumn: product_sku
+
+		annotation SummarizationSetBy = Automatic
+
+	column product_retail_price
+		dataType: double
+		formatString: \$#,0.00;(\$#,0.00);\$#,0.00
+		lineageTag: 616e495f-0d59-4a12-9776-7b618bb56c7c
+		summarizeBy: sum
+		sourceColumn: product_retail_price
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"currencyCulture":"en-US"}
+
+	column product_cost
+		dataType: double
+		formatString: \$#,0.00;(\$#,0.00);\$#,0.00
+		lineageTag: 86908338-63c9-4aa5-84c0-778c9a3140f5
+		summarizeBy: sum
+		sourceColumn: product_cost
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"currencyCulture":"en-US"}
+
+	column product_weight
+		dataType: double
+		lineageTag: a0cdf790-2494-4495-8334-ed07c5f63c91
+		summarizeBy: sum
+		sourceColumn: product_weight
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column recyclable
+		dataType: double
+		lineageTag: 8918bdd7-a11f-4069-aecf-01b5c010ebfe
+		summarizeBy: sum
+		sourceColumn: recyclable
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column low_fat
+		dataType: double
+		lineageTag: 67804a2c-a63f-4197-aaec-6a9e74e79bff
+		summarizeBy: sum
+		sourceColumn: low_fat
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column discount_price
+		dataType: decimal
+		formatString: "£"#,0.###############;-"£"#,0.###############;"£"#,0.###############
+		lineageTag: 3c0ffac3-9c12-4671-94e8-db270acc8807
+		summarizeBy: sum
+		sourceColumn: discount_price
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"currencyCulture":"en-GB"}
+
+	column Round
+		dataType: decimal
+		formatString: "£"#,0.###############;-"£"#,0.###############;"£"#,0.###############
+		lineageTag: 1199bf6e-f48e-4e85-bd41-4c74db7071ca
+		summarizeBy: sum
+		sourceColumn: Round
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"currencyCulture":"en-GB"}
+
+	column Price_Tier =
+			SWITCH(
+			    TRUE(),
+			    Products[product_retail_price]>3, "High",
+			    Products[product_retail_price]>1, "Mid",
+			    "Low")
+		lineageTag: 66280fe7-3620-4966-a421-32957a9588a4
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Products = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents("C:\Users\NatalijaSuharevska\OneDrive - Direct Medics Ltd\Desktop\Power BI_Dev_Maven Market\MavenMarket_Products.csv"),[Delimiter=",", Columns=9, Encoding=1252, QuoteStyle=QuoteStyle.None]),
+				    #"Promoted Headers" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+				    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"product_id", Int64.Type}, {"product_brand", type text}, {"product_name", type text}, {"product_sku", type text}, {"product_retail_price", type number}, {"product_cost", type number}, {"product_weight", type number}, {"recyclable", Int64.Type}, {"low_fat", Int64.Type}}),
+				    #"Added Custom" = Table.AddColumn(#"Changed Type", "discount_price", each [product_retail_price]*0.90),
+				    #"Changed Type1" = Table.TransformColumnTypes(#"Added Custom",{{"discount_price", Currency.Type}}),
+				    #"Inserted Rounding" = Table.AddColumn(#"Changed Type1", "Round", each Number.Round([discount_price], 2), Currency.Type),
+				    #"Replaced Value" = Table.ReplaceValue(#"Inserted Rounding",null,0,Replacer.ReplaceValue,{"low_fat"}),
+				    #"Replaced Value1" = Table.ReplaceValue(#"Replaced Value",null,0,Replacer.ReplaceValue,{"recyclable"})
+				in
+				    #"Replaced Value1"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

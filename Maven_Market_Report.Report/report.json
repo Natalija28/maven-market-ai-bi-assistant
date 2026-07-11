@@ -1,0 +1,261 @@
+{
+  "config": "{\"version\":\"5.59\",\"themeCollection\":{\"baseTheme\":{\"name\":\"CY24SU10\",\"version\":\"5.62\",\"type\":2}},\"activeSectionIndex\":0,\"bookmarks\":[{\"displayName\":\"Notes\",\"name\":\"f4924ccab8d02a34f471\",\"explorationState\":{\"version\":\"1.3\",\"activeSection\":\"623c1883557c95372709\",\"filters\":{\"byExpr\":[{\"name\":\"1ba61da392309c8c6372\",\"type\":\"Categorical\",\"filter\":{\"Version\":2,\"From\":[{\"Name\":\"c\",\"Entity\":\"Calendar\",\"Type\":0}],\"Where\":[{\"Condition\":{\"In\":{\"Expressions\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"c\"}},\"Property\":\"Year\"}}],\"Values\":[[{\"Literal\":{\"Value\":\"1998L\"}}]]}}}]},\"expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Entity\":\"Calendar\"}},\"Property\":\"Year\"}},\"howCreated\":1}]},\"sections\":{\"623c1883557c95372709\":{\"visualContainers\":{\"1750598ea1bb3df13a89\":{\"singleVisual\":{\"visualType\":\"image\",\"objects\":{}}},\"0280095d84b8c75a51ef\":{\"filters\":{\"byExpr\":[{\"type\":\"Advanced\",\"expression\":{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Entity\":\"Transaction Data\"}},\"Property\":\"Total Transactions\"}},\"howCreated\":0},{\"type\":\"Advanced\",\"expression\":{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Entity\":\"Transaction Data\"}},\"Property\":\"Total Profit\"}},\"howCreated\":0},{\"type\":\"Advanced\",\"expression\":{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Entity\":\"Return_Data\"}},\"Property\":\"Return Rate\"}},\"howCreated\":0},{\"type\":\"TopN\",\"filter\":{\"Version\":2,\"From\":[{\"Name\":\"subquery\",\"Expression\":{\"Subquery\":{\"Query\":{\"Version\":2,\"From\":[{\"Name\":\"p\",\"Entity\":\"Products\",\"Type\":0},{\"Name\":\"t\",\"Entity\":\"Transaction Data\",\"Type\":0}],\"Select\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"p\"}},\"Property\":\"product_brand\"},\"Name\":\"field\"}],\"OrderBy\":[{\"Direction\":2,\"Expression\":{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"t\"}},\"Property\":\"Total Transactions\"}}}],\"Top\":30}}},\"Type\":2},{\"Name\":\"p\",\"Entity\":\"Products\",\"Type\":0}],\"Where\":[{\"Condition\":{\"In\":{\"Expressions\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"p\"}},\"Property\":\"product_brand\"}}],\"Table\":{\"SourceRef\":{\"Source\":\"subquery\"}}}}}]},\"expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Entity\":\"Products\"}},\"Property\":\"product_brand\"}},\"howCreated\":0},{\"type\":\"Advanced\",\"expression\":{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Entity\":\"Transaction Data\"}},\"Property\":\"Profit Margin\"}},\"howCreated\":0}]},\"singleVisual\":{\"visualType\":\"pivotTable\",\"objects\":{},\"orderBy\":[{\"Direction\":2,\"Expression\":{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Entity\":\"Transaction Data\"}},\"Property\":\"Total Transactions\"}}}],\"activeProjections\":{\"Rows\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Entity\":\"Products\"}},\"Property\":\"product_brand\"}}]}}},\"0da188ccfae12c89c8d9\":{\"filters\":{\"byExpr\":[{\"type\":\"Advanced\",\"expression\":{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Entity\":\"Transaction Data\"}},\"Property\":\"Total Transactions\"}},\"howCreated\":0},{\"type\":\"Categorical\",\"expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Entity\":\"Calendar\"}},\"Property\":\"Start of Month\"}},\"howCreated\":0},{\"type\":\"Advanced\",\"expression\":{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Entity\":\"Transaction Data\"}},\"Property\":\"Last Month Transactions\"}},\"howCreated\":0}]},\"singleVisual\":{\"visualType\":\"kpi\",\"objects\":{}}},\"889c7ff9fc761b0fea7a\":{\"filters\":{\"byExpr\":[{\"type\":\"Categorical\",\"expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Entity\":\"Calendar\"}},\"Property\":\"Start of Month\"}},\"howCreated\":0},{\"type\":\"Advanced\",\"expression\":{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Entity\":\"Transaction Data\"}},\"Property\":\"Total Profit\"}},\"howCreated\":0},{\"type\":\"Advanced\",\"expression\":{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Entity\":\"Transaction Data\"}},\"Property\":\"Last Month Profit\"}},\"howCreated\":0}]},\"singleVisual\":{\"visualType\":\"kpi\",\"objects\":{}}},\"28a29497abe6cab9aed8\":{\"filters\":{\"byExpr\":[{\"type\":\"Categorical\",\"expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Entity\":\"Calendar\"}},\"Property\":\"Start of Month\"}},\"howCreated\":0},{\"type\":\"Advanced\",\"expression\":{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Entity\":\"Return_Data\"}},\"Property\":\"Total Returns\"}},\"howCreated\":0},{\"type\":\"Advanced\",\"expression\":{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Entity\":\"Return_Data\"}},\"Property\":\"Last Month Returns\"}},\"howCreated\":0}]},\"singleVisual\":{\"visualType\":\"kpi\",\"objects\":{}}},\"2ac566b01d78e73f5a1f\":{\"filters\":{\"byExpr\":[{\"type\":\"Advanced\",\"expression\":{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Entity\":\"Transaction Data\"}},\"Property\":\"Total Transactions\"}},\"howCreated\":0},{\"type\":\"Categorical\",\"expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Entity\":\"Stores\"}},\"Property\":\"City\"}},\"howCreated\":0}]},\"singleVisual\":{\"visualType\":\"map\",\"objects\":{},\"activeProjections\":{\"Category\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Entity\":\"Stores\"}},\"Property\":\"City\"}}]}}},\"ab9740e772917e3d392e\":{\"filters\":{\"byExpr\":[{\"type\":\"Categorical\",\"expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Entity\":\"Stores\"}},\"Property\":\"Country and Region\"}},\"howCreated\":0}]},\"singleVisual\":{\"visualType\":\"slicer\",\"objects\":{\"merge\":{\"general\":[{\"properties\":{\"filter\":{\"filter\":{\"Version\":2,\"From\":[{\"Name\":\"s\",\"Entity\":\"Stores\",\"Type\":0}],\"Where\":[{\"Condition\":{\"In\":{\"Expressions\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"s\"}},\"Property\":\"Country and Region\"}}],\"Values\":[[{\"Literal\":{\"Value\":\"'USA'\"}}]]}}}]}}}}],\"data\":[{\"properties\":{\"mode\":{\"expr\":{\"Literal\":{\"Value\":\"'Basic'\"}}}}}]}},\"activeProjections\":{\"Values\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Entity\":\"Stores\"}},\"Property\":\"Country and Region\"}}]}}},\"b6b6dd2f07d529ad5b8a\":{\"filters\":{\"byExpr\":[{\"type\":\"Advanced\",\"expression\":{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Entity\":\"Transaction Data\"}},\"Property\":\"Total Transactions\"}},\"howCreated\":0},{\"type\":\"Categorical\",\"expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Entity\":\"Stores\"}},\"Property\":\"Country and Region\"}},\"howCreated\":0},{\"type\":\"Categorical\",\"expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Entity\":\"Stores\"}},\"Property\":\"State and Province\"}},\"howCreated\":0},{\"type\":\"Categorical\",\"expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Entity\":\"Stores\"}},\"Property\":\"City\"}},\"howCreated\":0}]},\"singleVisual\":{\"visualType\":\"treemap\",\"objects\":{},\"activeProjections\":{\"Group\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Entity\":\"Stores\"}},\"Property\":\"City\"}}]}},\"highlight\":{\"selection\":[{\"dataMap\":{\"Stores.City\":[{\"scopeId\":{\"Comparison\":{\"ComparisonKind\":0,\"Left\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Entity\":\"Stores\"}},\"Property\":\"City\"}},\"Right\":{\"Literal\":{\"Value\":\"'Portland'\"}}}}}]},\"metadata\":[\"Transaction Data.Total Transactions\"]}],\"filterExpressionMetadata\":{\"expressions\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Entity\":\"Stores\"}},\"Property\":\"City\"}}],\"cachedValueItems\":[{\"identities\":[{\"scopeId\":{\"Comparison\":{\"ComparisonKind\":0,\"Left\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Entity\":\"Stores\"}},\"Property\":\"City\"}},\"Right\":{\"Literal\":{\"Value\":\"'Portland'\"}}}}}],\"valueMap\":{\"0\":\"Portland\"}}]}}},\"9a55e4de4eb7afdf742b\":{\"filters\":{\"byExpr\":[{\"type\":\"Advanced\",\"expression\":{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Entity\":\"Transaction Data\"}},\"Property\":\"Total Revenue\"}},\"howCreated\":0},{\"type\":\"Categorical\",\"expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Entity\":\"Calendar\"}},\"Property\":\"Start of Week\"}},\"howCreated\":0}]},\"singleVisual\":{\"visualType\":\"columnChart\",\"objects\":{},\"orderBy\":[{\"Direction\":1,\"Expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Entity\":\"Calendar\"}},\"Property\":\"Start of Week\"}}}],\"activeProjections\":{\"Category\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Entity\":\"Calendar\"}},\"Property\":\"Start of Week\"}}]}}},\"592cd8f4d88f20dad137\":{\"filters\":{\"byExpr\":[{\"type\":\"Advanced\",\"expression\":{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Entity\":\"Transaction Data\"}},\"Property\":\"Total Revenue\"}},\"howCreated\":0},{\"type\":\"Advanced\",\"expression\":{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Entity\":\"Transaction Data\"}},\"Property\":\"Revenue Target\"}},\"howCreated\":0},{\"name\":\"13715d6792d949e387a4\",\"type\":\"TopN\",\"filter\":{\"Version\":2,\"From\":[{\"Name\":\"subquery\",\"Expression\":{\"Subquery\":{\"Query\":{\"Version\":2,\"From\":[{\"Name\":\"c\",\"Entity\":\"Calendar\",\"Type\":0}],\"Select\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"c\"}},\"Property\":\"Start of Month\"},\"Name\":\"field\"}],\"OrderBy\":[{\"Direction\":2,\"Expression\":{\"Aggregation\":{\"Expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"c\"}},\"Property\":\"Start of Month\"}},\"Function\":4}}}],\"Top\":1}}},\"Type\":2},{\"Name\":\"c\",\"Entity\":\"Calendar\",\"Type\":0}],\"Where\":[{\"Condition\":{\"In\":{\"Expressions\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"c\"}},\"Property\":\"Start of Month\"}}],\"Table\":{\"SourceRef\":{\"Source\":\"subquery\"}}}}}]},\"expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Entity\":\"Calendar\"}},\"Property\":\"Start of Month\"}},\"howCreated\":1}]},\"singleVisual\":{\"visualType\":\"gauge\",\"objects\":{},\"orderBy\":[{\"Direction\":2,\"Expression\":{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Entity\":\"Transaction Data\"}},\"Property\":\"Total Revenue\"}}}]}}}}},\"objects\":{\"merge\":{\"outspacePane\":[{\"properties\":{\"expanded\":{\"expr\":{\"Literal\":{\"Value\":\"false\"}}}}}]}}},\"options\":{\"targetVisualNames\":[\"b6b6dd2f07d529ad5b8a\"]}}],\"defaultDrillFilterOtherVisuals\":true,\"slowDataSourceSettings\":{\"isCrossHighlightingDisabled\":false,\"isSlicerSelectionsButtonEnabled\":false,\"isFilterSelectionsButtonEnabled\":false,\"isFieldWellButtonEnabled\":false,\"isApplyAllButtonEnabled\":false},\"linguisticSchemaSyncVersion\":2,\"settings\":{\"useNewFilterPaneExperience\":true,\"allowChangeFilterTypes\":true,\"useStylableVisualContainerHeader\":true,\"queryLimitOption\":6,\"useEnhancedTooltips\":true,\"exportDataMode\":1,\"useDefaultAggregateDisplayName\":true},\"objects\":{\"section\":[{\"properties\":{\"verticalAlignment\":{\"expr\":{\"Literal\":{\"Value\":\"'Top'\"}}}}}],\"outspacePane\":[{\"properties\":{\"expanded\":{\"expr\":{\"Literal\":{\"Value\":\"false\"}}}}}]}}",
+  "filters": "[{\"name\":\"1ba61da392309c8c6372\",\"expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Entity\":\"Calendar\"}},\"Property\":\"Year\"}},\"filter\":{\"Version\":2,\"From\":[{\"Name\":\"c\",\"Entity\":\"Calendar\",\"Type\":0}],\"Where\":[{\"Condition\":{\"In\":{\"Expressions\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"c\"}},\"Property\":\"Year\"}}],\"Values\":[[{\"Literal\":{\"Value\":\"1998L\"}}]]}}}]},\"type\":\"Categorical\",\"howCreated\":1,\"objects\":{\"general\":[{\"properties\":{}}]}}]",
+  "layoutOptimization": 0,
+  "resourcePackages": [
+    {
+      "resourcePackage": {
+        "disabled": false,
+        "items": [
+          {
+            "name": "CY24SU10",
+            "path": "BaseThemes/CY24SU10.json",
+            "type": 202
+          }
+        ],
+        "name": "SharedResources",
+        "type": 2
+      }
+    },
+    {
+      "resourcePackage": {
+        "disabled": false,
+        "items": [
+          {
+            "name": "Maven_Market5133447740575638.png",
+            "path": "Maven_Market5133447740575638.png",
+            "type": 100
+          }
+        ],
+        "name": "RegisteredResources",
+        "type": 1
+      }
+    }
+  ],
+  "sections": [
+    {
+      "config": "{\"relationships\":[{\"source\":\"0280095d84b8c75a51ef\",\"target\":\"b6b6dd2f07d529ad5b8a\",\"type\":3}]}",
+      "displayName": "Topline Performance",
+      "displayOption": 1,
+      "filters": "[]",
+      "height": 720.00,
+      "name": "623c1883557c95372709",
+      "visualContainers": [
+        {
+          "config": "{\"name\":\"0280095d84b8c75a51ef\",\"layouts\":[{\"id\":0,\"position\":{\"x\":10,\"y\":101.25,\"z\":1000,\"width\":502.5,\"height\":618.75,\"tabOrder\":1000}}],\"singleVisual\":{\"visualType\":\"pivotTable\",\"projections\":{\"Values\":[{\"queryRef\":\"Transaction Data.Total Transactions\"},{\"queryRef\":\"Transaction Data.Total Profit\"},{\"queryRef\":\"Transaction Data.Profit Margin\"},{\"queryRef\":\"Return_Data.Return Rate\"}],\"Rows\":[{\"queryRef\":\"Products.product_brand\",\"active\":true}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"t\",\"Entity\":\"Transaction Data\",\"Type\":0},{\"Name\":\"r\",\"Entity\":\"Return_Data\",\"Type\":0},{\"Name\":\"p\",\"Entity\":\"Products\",\"Type\":0}],\"Select\":[{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"t\"}},\"Property\":\"Total Transactions\"},\"Name\":\"Transaction Data.Total Transactions\",\"NativeReferenceName\":\"Total Transactions\"},{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"t\"}},\"Property\":\"Total Profit\"},\"Name\":\"Transaction Data.Total Profit\",\"NativeReferenceName\":\"Total Profit\"},{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"r\"}},\"Property\":\"Return Rate\"},\"Name\":\"Return_Data.Return Rate\",\"NativeReferenceName\":\"Return Rate\"},{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"p\"}},\"Property\":\"product_brand\"},\"Name\":\"Products.product_brand\",\"NativeReferenceName\":\"product_brand\"},{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"t\"}},\"Property\":\"Profit Margin\"},\"Name\":\"Transaction Data.Profit Margin\",\"NativeReferenceName\":\"Profit Margin\"}],\"OrderBy\":[{\"Direction\":2,\"Expression\":{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"t\"}},\"Property\":\"Profit Margin\"}}}]},\"drillFilterOtherVisuals\":true,\"objects\":{\"columnFormatting\":[{\"properties\":{\"dataBars\":{\"positiveColor\":{\"solid\":{\"color\":{\"expr\":{\"Literal\":{\"Value\":\"'#55B18C'\"}}}}},\"negativeColor\":{\"solid\":{\"color\":{\"expr\":{\"Literal\":{\"Value\":\"'#efb5b9'\"}}}}},\"axisColor\":{\"solid\":{\"color\":{\"expr\":{\"Literal\":{\"Value\":\"'foreground'\"}}}}},\"reverseDirection\":{\"expr\":{\"Literal\":{\"Value\":\"false\"}}},\"hideText\":{\"expr\":{\"Literal\":{\"Value\":\"false\"}}},\"totalMatchingOption\":{\"expr\":{\"Literal\":{\"Value\":\"1L\"}}}}},\"selector\":{\"metadata\":\"Transaction Data.Total Transactions\"}}],\"values\":[{\"properties\":{\"backColor\":{\"solid\":{\"color\":{\"expr\":{\"FillRule\":{\"Input\":{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Entity\":\"Transaction Data\"}},\"Property\":\"Profit Margin\"}},\"FillRule\":{\"linearGradient2\":{\"min\":{\"color\":{\"Literal\":{\"Value\":\"'#64B591'\"}}},\"max\":{\"color\":{\"Literal\":{\"Value\":\"'#FFFFFF'\"}}},\"nullColoringStrategy\":{\"strategy\":{\"Literal\":{\"Value\":\"'asZero'\"}}}}}}}}}}},\"selector\":{\"data\":[{\"dataViewWildcard\":{\"matchingOption\":1}}],\"metadata\":\"Transaction Data.Profit Margin\"}},{\"properties\":{\"backColor\":{\"solid\":{\"color\":{\"expr\":{\"FillRule\":{\"Input\":{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Entity\":\"Return_Data\"}},\"Property\":\"Return Rate\"}},\"FillRule\":{\"linearGradient2\":{\"min\":{\"color\":{\"Literal\":{\"Value\":\"'#FFFFFF'\"}}},\"max\":{\"color\":{\"Literal\":{\"Value\":\"'#efb5b9'\"}}},\"nullColoringStrategy\":{\"strategy\":{\"Literal\":{\"Value\":\"'asZero'\"}}}}}}}}}}},\"selector\":{\"data\":[{\"dataViewWildcard\":{\"matchingOption\":1}}],\"metadata\":\"Return_Data.Return Rate\"}}]}}}",
+          "filters": "[{\"expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Entity\":\"Products\"}},\"Property\":\"product_brand\"}},\"filter\":{\"Version\":2,\"From\":[{\"Name\":\"subquery\",\"Expression\":{\"Subquery\":{\"Query\":{\"Version\":2,\"From\":[{\"Name\":\"p\",\"Entity\":\"Products\",\"Type\":0},{\"Name\":\"t\",\"Entity\":\"Transaction Data\",\"Type\":0}],\"Select\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"p\"}},\"Property\":\"product_brand\"},\"Name\":\"field\"}],\"OrderBy\":[{\"Direction\":2,\"Expression\":{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"t\"}},\"Property\":\"Total Transactions\"}}}],\"Top\":30}}},\"Type\":2},{\"Name\":\"p\",\"Entity\":\"Products\",\"Type\":0}],\"Where\":[{\"Condition\":{\"In\":{\"Expressions\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"p\"}},\"Property\":\"product_brand\"}}],\"Table\":{\"SourceRef\":{\"Source\":\"subquery\"}}}}}]},\"type\":\"TopN\",\"howCreated\":0,\"isHiddenInViewMode\":false}]",
+          "height": 618.75,
+          "width": 502.50,
+          "x": 10.00,
+          "y": 101.25,
+          "z": 1000.00
+        },
+        {
+          "config": "{\"name\":\"0da188ccfae12c89c8d9\",\"layouts\":[{\"id\":0,\"position\":{\"x\":512.5,\"y\":0,\"z\":2000,\"width\":261.25,\"height\":108.75,\"tabOrder\":2000}}],\"singleVisual\":{\"visualType\":\"kpi\",\"projections\":{\"Indicator\":[{\"queryRef\":\"Transaction Data.Total Transactions\"}],\"TrendLine\":[{\"queryRef\":\"Calendar.Start of Month\"}],\"Goal\":[{\"queryRef\":\"Transaction Data.Last Month Transactions\"}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"t\",\"Entity\":\"Transaction Data\",\"Type\":0},{\"Name\":\"c\",\"Entity\":\"Calendar\",\"Type\":0}],\"Select\":[{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"t\"}},\"Property\":\"Total Transactions\"},\"Name\":\"Transaction Data.Total Transactions\",\"NativeReferenceName\":\"Total Transactions\"},{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"c\"}},\"Property\":\"Start of Month\"},\"Name\":\"Calendar.Start of Month\",\"NativeReferenceName\":\"Start of Month\"},{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"t\"}},\"Property\":\"Last Month Transactions\"},\"Name\":\"Transaction Data.Last Month Transactions\",\"NativeReferenceName\":\"Last Month Transactions\"}]},\"drillFilterOtherVisuals\":true,\"hasDefaultSort\":true,\"vcObjects\":{\"title\":[{\"properties\":{\"text\":{\"expr\":{\"Literal\":{\"Value\":\"'Current Month Transactions'\"}}},\"alignment\":{\"expr\":{\"Literal\":{\"Value\":\"'center'\"}}}}}]}}}",
+          "filters": "[]",
+          "height": 108.75,
+          "width": 261.25,
+          "x": 512.50,
+          "y": 0.00,
+          "z": 2000.00
+        },
+        {
+          "config": "{\"name\":\"1750598ea1bb3df13a89\",\"layouts\":[{\"id\":0,\"position\":{\"x\":10,\"y\":0,\"z\":0,\"width\":502.5,\"height\":101.25,\"tabOrder\":0}}],\"singleVisual\":{\"visualType\":\"image\",\"drillFilterOtherVisuals\":true,\"objects\":{\"general\":[{\"properties\":{\"imageUrl\":{\"expr\":{\"ResourcePackageItem\":{\"PackageName\":\"RegisteredResources\",\"PackageType\":1,\"ItemName\":\"Maven_Market5133447740575638.png\"}}}}}]}},\"howCreated\":\"InsertVisualButton\"}",
+          "filters": "[]",
+          "height": 101.25,
+          "width": 502.50,
+          "x": 10.00,
+          "y": 0.00,
+          "z": 0.00
+        },
+        {
+          "config": "{\"name\":\"28a29497abe6cab9aed8\",\"layouts\":[{\"id\":0,\"position\":{\"x\":1031.25,\"y\":0,\"z\":4000,\"width\":248.75,\"height\":108.75,\"tabOrder\":4000}}],\"singleVisual\":{\"visualType\":\"kpi\",\"projections\":{\"TrendLine\":[{\"queryRef\":\"Calendar.Start of Month\"}],\"Indicator\":[{\"queryRef\":\"Return_Data.Total Returns\"}],\"Goal\":[{\"queryRef\":\"Return_Data.Last Month Returns\"}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"c\",\"Entity\":\"Calendar\",\"Type\":0},{\"Name\":\"r\",\"Entity\":\"Return_Data\",\"Type\":0}],\"Select\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"c\"}},\"Property\":\"Start of Month\"},\"Name\":\"Calendar.Start of Month\",\"NativeReferenceName\":\"Start of Month\"},{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"r\"}},\"Property\":\"Total Returns\"},\"Name\":\"Return_Data.Total Returns\",\"NativeReferenceName\":\"Total Returns\"},{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"r\"}},\"Property\":\"Last Month Returns\"},\"Name\":\"Return_Data.Last Month Returns\",\"NativeReferenceName\":\"Last Month Returns\"}]},\"drillFilterOtherVisuals\":true,\"hasDefaultSort\":true,\"objects\":{\"status\":[{\"properties\":{\"direction\":{\"expr\":{\"Literal\":{\"Value\":\"'Negative'\"}}}}}]},\"vcObjects\":{\"title\":[{\"properties\":{\"text\":{\"expr\":{\"Literal\":{\"Value\":\"'Current Month Returns'\"}}},\"alignment\":{\"expr\":{\"Literal\":{\"Value\":\"'center'\"}}}}}]}}}",
+          "filters": "[]",
+          "height": 108.75,
+          "width": 248.75,
+          "x": 1031.25,
+          "y": 0.00,
+          "z": 4000.00
+        },
+        {
+          "config": "{\"name\":\"2ac566b01d78e73f5a1f\",\"layouts\":[{\"id\":0,\"position\":{\"x\":613.75,\"y\":127.5,\"z\":5000,\"width\":390,\"height\":383.75,\"tabOrder\":5000}}],\"singleVisual\":{\"visualType\":\"map\",\"projections\":{\"Size\":[{\"queryRef\":\"Transaction Data.Total Transactions\"}],\"Category\":[{\"queryRef\":\"Stores.City\",\"active\":true}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"t\",\"Entity\":\"Transaction Data\",\"Type\":0},{\"Name\":\"s\",\"Entity\":\"Stores\",\"Type\":0}],\"Select\":[{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"t\"}},\"Property\":\"Total Transactions\"},\"Name\":\"Transaction Data.Total Transactions\",\"NativeReferenceName\":\"Total Transactions\"},{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"s\"}},\"Property\":\"City\"},\"Name\":\"Stores.City\",\"NativeReferenceName\":\"City\"}]},\"drillFilterOtherVisuals\":true,\"vcObjects\":{\"title\":[{\"properties\":{\"show\":{\"expr\":{\"Literal\":{\"Value\":\"false\"}}}}}]}}}",
+          "filters": "[]",
+          "height": 383.75,
+          "width": 390.00,
+          "x": 613.75,
+          "y": 127.50,
+          "z": 5000.00
+        },
+        {
+          "config": "{\"name\":\"592cd8f4d88f20dad137\",\"layouts\":[{\"id\":0,\"position\":{\"x\":1017.5,\"y\":546.25,\"z\":9000,\"width\":262.5,\"height\":173.75,\"tabOrder\":9000}}],\"singleVisual\":{\"visualType\":\"gauge\",\"projections\":{\"Y\":[{\"queryRef\":\"Transaction Data.Total Revenue\"}],\"TargetValue\":[{\"queryRef\":\"Transaction Data.Revenue Target\"}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"t\",\"Entity\":\"Transaction Data\",\"Type\":0}],\"Select\":[{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"t\"}},\"Property\":\"Total Revenue\"},\"Name\":\"Transaction Data.Total Revenue\",\"NativeReferenceName\":\"Total Revenue\"},{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"t\"}},\"Property\":\"Revenue Target\"},\"Name\":\"Transaction Data.Revenue Target\",\"NativeReferenceName\":\"Revenue Target\"}],\"OrderBy\":[{\"Direction\":2,\"Expression\":{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"t\"}},\"Property\":\"Total Revenue\"}}}]},\"drillFilterOtherVisuals\":true,\"hasDefaultSort\":true,\"objects\":{\"labels\":[{\"properties\":{\"show\":{\"expr\":{\"Literal\":{\"Value\":\"false\"}}}}}]},\"vcObjects\":{\"title\":[{\"properties\":{\"text\":{\"expr\":{\"Literal\":{\"Value\":\"'Revenue vs. Target'\"}}},\"alignment\":{\"expr\":{\"Literal\":{\"Value\":\"'center'\"}}},\"fontColor\":{\"solid\":{\"color\":{\"expr\":{\"ThemeDataColor\":{\"ColorId\":0,\"Percent\":0}}}}},\"background\":{\"solid\":{\"color\":{\"expr\":{\"ThemeDataColor\":{\"ColorId\":1,\"Percent\":0.6}}}}}}}]}}}",
+          "filters": "[{\"name\":\"13715d6792d949e387a4\",\"expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Entity\":\"Calendar\"}},\"Property\":\"Start of Month\"}},\"filter\":{\"Version\":2,\"From\":[{\"Name\":\"subquery\",\"Expression\":{\"Subquery\":{\"Query\":{\"Version\":2,\"From\":[{\"Name\":\"c\",\"Entity\":\"Calendar\",\"Type\":0}],\"Select\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"c\"}},\"Property\":\"Start of Month\"},\"Name\":\"field\"}],\"OrderBy\":[{\"Direction\":2,\"Expression\":{\"Aggregation\":{\"Expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"c\"}},\"Property\":\"Start of Month\"}},\"Function\":4}}}],\"Top\":1}}},\"Type\":2},{\"Name\":\"c\",\"Entity\":\"Calendar\",\"Type\":0}],\"Where\":[{\"Condition\":{\"In\":{\"Expressions\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"c\"}},\"Property\":\"Start of Month\"}}],\"Table\":{\"SourceRef\":{\"Source\":\"subquery\"}}}}}]},\"type\":\"TopN\",\"howCreated\":1}]",
+          "height": 173.75,
+          "width": 262.50,
+          "x": 1017.50,
+          "y": 546.25,
+          "z": 9000.00
+        },
+        {
+          "config": "{\"name\":\"889c7ff9fc761b0fea7a\",\"layouts\":[{\"id\":0,\"position\":{\"x\":773.75,\"y\":0,\"z\":3000,\"width\":257.5,\"height\":108.75,\"tabOrder\":3000}}],\"singleVisual\":{\"visualType\":\"kpi\",\"projections\":{\"TrendLine\":[{\"queryRef\":\"Calendar.Start of Month\"}],\"Indicator\":[{\"queryRef\":\"Transaction Data.Total Profit\"}],\"Goal\":[{\"queryRef\":\"Transaction Data.Last Month Profit\"}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"t\",\"Entity\":\"Transaction Data\",\"Type\":0},{\"Name\":\"c\",\"Entity\":\"Calendar\",\"Type\":0}],\"Select\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"c\"}},\"Property\":\"Start of Month\"},\"Name\":\"Calendar.Start of Month\",\"NativeReferenceName\":\"Start of Month\"},{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"t\"}},\"Property\":\"Total Profit\"},\"Name\":\"Transaction Data.Total Profit\",\"NativeReferenceName\":\"Total Profit\"},{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"t\"}},\"Property\":\"Last Month Profit\"},\"Name\":\"Transaction Data.Last Month Profit\",\"NativeReferenceName\":\"Last Month Profit\"}]},\"drillFilterOtherVisuals\":true,\"hasDefaultSort\":true,\"vcObjects\":{\"title\":[{\"properties\":{\"text\":{\"expr\":{\"Literal\":{\"Value\":\"'Current Month Profit'\"}}},\"alignment\":{\"expr\":{\"Literal\":{\"Value\":\"'center'\"}}}}}]}}}",
+          "filters": "[]",
+          "height": 108.75,
+          "width": 257.50,
+          "x": 773.75,
+          "y": 0.00,
+          "z": 3000.00
+        },
+        {
+          "config": "{\"name\":\"9a55e4de4eb7afdf742b\",\"layouts\":[{\"id\":0,\"position\":{\"x\":537.5,\"y\":546.25,\"z\":8000,\"width\":466.25,\"height\":173.75,\"tabOrder\":8000}}],\"singleVisual\":{\"visualType\":\"columnChart\",\"projections\":{\"Y\":[{\"queryRef\":\"Transaction Data.Total Revenue\"}],\"Category\":[{\"queryRef\":\"Calendar.Start of Week\",\"active\":true}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"t\",\"Entity\":\"Transaction Data\",\"Type\":0},{\"Name\":\"c\",\"Entity\":\"Calendar\",\"Type\":0}],\"Select\":[{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"t\"}},\"Property\":\"Total Revenue\"},\"Name\":\"Transaction Data.Total Revenue\",\"NativeReferenceName\":\"Total Revenue\"},{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"c\"}},\"Property\":\"Start of Week\"},\"Name\":\"Calendar.Start of Week\",\"NativeReferenceName\":\"Start of Week\"}],\"OrderBy\":[{\"Direction\":1,\"Expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"c\"}},\"Property\":\"Start of Week\"}}}]},\"columnProperties\":{\"Calendar.Start of Month.Variation.Date Hierarchy.Year\":{\"formatString\":null}},\"drillFilterOtherVisuals\":true,\"hasDefaultSort\":true,\"objects\":{\"categoryAxis\":[{\"properties\":{\"show\":{\"expr\":{\"Literal\":{\"Value\":\"true\"}}},\"showAxisTitle\":{\"expr\":{\"Literal\":{\"Value\":\"false\"}}},\"preferredCategoryWidth\":{\"expr\":{\"Literal\":{\"Value\":\"20D\"}}},\"innerPadding\":{\"expr\":{\"Literal\":{\"Value\":\"10L\"}}},\"gridlineShow\":{\"expr\":{\"Literal\":{\"Value\":\"false\"}}},\"maxMarginFactor\":{\"expr\":{\"Literal\":{\"Value\":\"20L\"}}}}}],\"dataPoint\":[{\"properties\":{\"fillTransparency\":{\"expr\":{\"Literal\":{\"Value\":\"0D\"}}},\"fill\":{\"solid\":{\"color\":{\"expr\":{\"Literal\":{\"Value\":\"'#64A37E'\"}}}}}}}],\"general\":[{\"properties\":{\"responsive\":{\"expr\":{\"Literal\":{\"Value\":\"true\"}}}}}],\"valueAxis\":[{\"properties\":{\"logAxisScale\":{\"expr\":{\"Literal\":{\"Value\":\"false\"}}},\"invertAxis\":{\"expr\":{\"Literal\":{\"Value\":\"false\"}}},\"show\":{\"expr\":{\"Literal\":{\"Value\":\"true\"}}},\"showAxisTitle\":{\"expr\":{\"Literal\":{\"Value\":\"false\"}}},\"end\":{\"expr\":{\"Literal\":{\"Value\":\"0D\"}}},\"gridlineShow\":{\"expr\":{\"Literal\":{\"Value\":\"false\"}}},\"switchAxisPosition\":{\"expr\":{\"Literal\":{\"Value\":\"false\"}}},\"labelPrecision\":{\"expr\":{\"Literal\":{\"Value\":\"0L\"}}}}}],\"ribbonBands\":[{\"properties\":{\"show\":{\"expr\":{\"Literal\":{\"Value\":\"false\"}}}}}],\"labels\":[{\"properties\":{\"show\":{\"expr\":{\"Literal\":{\"Value\":\"false\"}}}}}]},\"vcObjects\":{\"title\":[{\"properties\":{\"text\":{\"expr\":{\"Literal\":{\"Value\":\"'Weekly Revenue Trending'\"}}},\"alignment\":{\"expr\":{\"Literal\":{\"Value\":\"'center'\"}}},\"background\":{\"solid\":{\"color\":{\"expr\":{\"ThemeDataColor\":{\"ColorId\":1,\"Percent\":0.6}}}}},\"fontColor\":{\"solid\":{\"color\":{\"expr\":{\"ThemeDataColor\":{\"ColorId\":0,\"Percent\":0}}}}},\"show\":{\"expr\":{\"Literal\":{\"Value\":\"true\"}}}}}],\"general\":[{\"properties\":{\"keepLayerOrder\":{\"expr\":{\"Literal\":{\"Value\":\"false\"}}}}}],\"background\":[{\"properties\":{\"transparency\":{\"expr\":{\"Literal\":{\"Value\":\"100D\"}}}}}]}}}",
+          "filters": "[]",
+          "height": 173.75,
+          "width": 466.25,
+          "x": 537.50,
+          "y": 546.25,
+          "z": 8000.00
+        },
+        {
+          "config": "{\"name\":\"ab9740e772917e3d392e\",\"layouts\":[{\"id\":0,\"position\":{\"x\":512.5,\"y\":122.5,\"z\":6000,\"width\":116.25,\"height\":388.75,\"tabOrder\":6000}}],\"singleVisual\":{\"visualType\":\"slicer\",\"projections\":{\"Values\":[{\"queryRef\":\"Stores.Country and Region\",\"active\":true}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"s\",\"Entity\":\"Stores\",\"Type\":0}],\"Select\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"s\"}},\"Property\":\"Country and Region\"},\"Name\":\"Stores.Country and Region\",\"NativeReferenceName\":\"Country and Region\"}]},\"drillFilterOtherVisuals\":true,\"objects\":{\"data\":[{\"properties\":{\"mode\":{\"expr\":{\"Literal\":{\"Value\":\"'Basic'\"}}}}}],\"general\":[{\"properties\":{\"orientation\":{\"expr\":{\"Literal\":{\"Value\":\"1D\"}}}}}],\"selection\":[{\"properties\":{\"selectAllCheckboxEnabled\":{\"expr\":{\"Literal\":{\"Value\":\"true\"}}}}}],\"header\":[{\"properties\":{\"show\":{\"expr\":{\"Literal\":{\"Value\":\"false\"}}}}}],\"items\":[{\"properties\":{\"fontColor\":{\"solid\":{\"color\":{\"expr\":{\"ThemeDataColor\":{\"ColorId\":1,\"Percent\":0}}}}},\"background\":{\"solid\":{\"color\":{\"expr\":{\"ThemeDataColor\":{\"ColorId\":0,\"Percent\":-0.1}}}}}}}]},\"vcObjects\":{\"title\":[{\"properties\":{\"show\":{\"expr\":{\"Literal\":{\"Value\":\"false\"}}}}}]}}}",
+          "filters": "[]",
+          "height": 388.75,
+          "width": 116.25,
+          "x": 512.50,
+          "y": 122.50,
+          "z": 6000.00
+        },
+        {
+          "config": "{\"name\":\"b6b6dd2f07d529ad5b8a\",\"layouts\":[{\"id\":0,\"position\":{\"x\":1017.5,\"y\":127.5,\"z\":7000,\"width\":262.5,\"height\":383.75,\"tabOrder\":7000}}],\"singleVisual\":{\"visualType\":\"treemap\",\"projections\":{\"Values\":[{\"queryRef\":\"Transaction Data.Total Transactions\"}],\"Group\":[{\"queryRef\":\"Stores.Country and Region\"},{\"queryRef\":\"Stores.State and Province\"},{\"queryRef\":\"Stores.City\",\"active\":true}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"t\",\"Entity\":\"Transaction Data\",\"Type\":0},{\"Name\":\"s\",\"Entity\":\"Stores\",\"Type\":0}],\"Select\":[{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"t\"}},\"Property\":\"Total Transactions\"},\"Name\":\"Transaction Data.Total Transactions\",\"NativeReferenceName\":\"Total Transactions\"},{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"s\"}},\"Property\":\"Country and Region\"},\"Name\":\"Stores.Country and Region\",\"NativeReferenceName\":\"Country and Region\"},{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"s\"}},\"Property\":\"State and Province\"},\"Name\":\"Stores.State and Province\",\"NativeReferenceName\":\"State and Province\"},{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"s\"}},\"Property\":\"City\"},\"Name\":\"Stores.City\",\"NativeReferenceName\":\"City\"}]},\"drillFilterOtherVisuals\":false,\"vcObjects\":{\"title\":[{\"properties\":{\"show\":{\"expr\":{\"Literal\":{\"Value\":\"false\"}}}}}],\"visualTooltip\":[{\"properties\":{\"type\":{\"expr\":{\"Literal\":{\"Value\":\"'Canvas'\"}}}}}]}}}",
+          "filters": "[]",
+          "height": 383.75,
+          "width": 262.50,
+          "x": 1017.50,
+          "y": 127.50,
+          "z": 7000.00
+        }
+      ],
+      "width": 1280.00
+    },
+    {
+      "config": "{}",
+      "displayName": "Page 1",
+      "displayOption": 1,
+      "filters": "[]",
+      "height": 720.00,
+      "name": "d076201219a74f7b3b50",
+      "ordinal": 2,
+      "visualContainers": [
+        {
+          "config": "{\"name\":\"051817d4dd0df9499083\",\"layouts\":[{\"id\":0,\"position\":{\"x\":18,\"y\":270,\"width\":1262,\"height\":150,\"z\":1000,\"tabOrder\":1000}}],\"singleVisual\":{\"visualType\":\"pivotTable\",\"projections\":{\"Values\":[{\"queryRef\":\"Products.Unique Products\"}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"p\",\"Entity\":\"Products\",\"Type\":0}],\"Select\":[{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"p\"}},\"Property\":\"Unique Products\"},\"Name\":\"Products.Unique Products\",\"NativeReferenceName\":\"Unique Products\"}]},\"drillFilterOtherVisuals\":true}}",
+          "filters": "[]",
+          "height": 150.00,
+          "width": 1262.00,
+          "x": 18.00,
+          "y": 270.00,
+          "z": 1000.00
+        },
+        {
+          "config": "{\"name\":\"1e7d225dbfaf649b7bdf\",\"layouts\":[{\"id\":0,\"position\":{\"x\":18.342488655361834,\"y\":63.58729400525436,\"z\":0,\"width\":1261.9632194888943,\"height\":132.0659183186052,\"tabOrder\":0}}],\"singleVisual\":{\"visualType\":\"pivotTable\",\"projections\":{\"Values\":[{\"queryRef\":\"Transaction Data.Quantity Sold\"},{\"queryRef\":\"Return_Data.Quantity Returned\"},{\"queryRef\":\"Transaction Data.Total Transactions\"},{\"queryRef\":\"Return_Data.Total Returns\"},{\"queryRef\":\"Return_Data.Return Rate\"},{\"queryRef\":\"Transaction Data.Weekend Transactions\"},{\"queryRef\":\"Transaction Data.% Weekend Transactions\"},{\"queryRef\":\"Transaction Data.All Transactions\"},{\"queryRef\":\"Return_Data.All Returns\"},{\"queryRef\":\"Transaction Data.Total Revenue\"},{\"queryRef\":\"Transaction Data.Total Cost\"},{\"queryRef\":\"Transaction Data.Total Profit\"},{\"queryRef\":\"Transaction Data.Total Margin\"}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"t\",\"Entity\":\"Transaction Data\",\"Type\":0},{\"Name\":\"r\",\"Entity\":\"Return_Data\",\"Type\":0}],\"Select\":[{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"t\"}},\"Property\":\"Quantity Sold\"},\"Name\":\"Transaction Data.Quantity Sold\",\"NativeReferenceName\":\"Quantity Sold\"},{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"r\"}},\"Property\":\"Quantity Returned\"},\"Name\":\"Return_Data.Quantity Returned\",\"NativeReferenceName\":\"Quantity Returned\"},{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"t\"}},\"Property\":\"Total Transactions\"},\"Name\":\"Transaction Data.Total Transactions\",\"NativeReferenceName\":\"Total Transactions\"},{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"r\"}},\"Property\":\"Total Returns\"},\"Name\":\"Return_Data.Total Returns\",\"NativeReferenceName\":\"Total Returns\"},{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"r\"}},\"Property\":\"Return Rate\"},\"Name\":\"Return_Data.Return Rate\",\"NativeReferenceName\":\"Return Rate\"},{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"t\"}},\"Property\":\"Weekend Transactions\"},\"Name\":\"Transaction Data.Weekend Transactions\",\"NativeReferenceName\":\"Weekend Transactions\"},{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"t\"}},\"Property\":\"% Weekend Transactions\"},\"Name\":\"Transaction Data.% Weekend Transactions\",\"NativeReferenceName\":\"% Weekend Transactions\"},{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"t\"}},\"Property\":\"All Transactions\"},\"Name\":\"Transaction Data.All Transactions\",\"NativeReferenceName\":\"All Transactions\"},{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"r\"}},\"Property\":\"All Returns\"},\"Name\":\"Return_Data.All Returns\",\"NativeReferenceName\":\"All Returns\"},{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"t\"}},\"Property\":\"Total Revenue\"},\"Name\":\"Transaction Data.Total Revenue\",\"NativeReferenceName\":\"Total Revenue\"},{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"t\"}},\"Property\":\"Total Cost\"},\"Name\":\"Transaction Data.Total Cost\",\"NativeReferenceName\":\"Total Cost\"},{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"t\"}},\"Property\":\"Total Profit\"},\"Name\":\"Transaction Data.Total Profit\",\"NativeReferenceName\":\"Total Profit\"},{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"t\"}},\"Property\":\"Total Margin\"},\"Name\":\"Transaction Data.Total Margin\",\"NativeReferenceName\":\"Total Margin\"}]},\"drillFilterOtherVisuals\":true}}",
+          "filters": "[]",
+          "height": 132.07,
+          "width": 1261.96,
+          "x": 18.34,
+          "y": 63.59,
+          "z": 0.00
+        },
+        {
+          "config": "{\"name\":\"8a935a84c1150750cd74\",\"layouts\":[{\"id\":0,\"position\":{\"x\":17.486392120389713,\"y\":373.45937457118026,\"z\":2000,\"width\":1262.767316693857,\"height\":261.0468537972464,\"tabOrder\":2000}}],\"singleVisual\":{\"visualType\":\"pivotTable\",\"projections\":{\"Values\":[{\"queryRef\":\"Transaction Data.Revenue Target\"}],\"Rows\":[{\"queryRef\":\"Calendar.date.Variation.Date Hierarchy.Year\",\"active\":true},{\"queryRef\":\"Calendar.date.Variation.Date Hierarchy.Quarter\",\"active\":true},{\"queryRef\":\"Calendar.date.Variation.Date Hierarchy.Month\",\"active\":true},{\"queryRef\":\"Calendar.date.Variation.Date Hierarchy.Day\"}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"t\",\"Entity\":\"Transaction Data\",\"Type\":0},{\"Name\":\"c\",\"Entity\":\"Calendar\",\"Type\":0}],\"Select\":[{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"t\"}},\"Property\":\"Revenue Target\"},\"Name\":\"Transaction Data.Revenue Target\",\"NativeReferenceName\":\"Revenue Target\"},{\"HierarchyLevel\":{\"Expression\":{\"Hierarchy\":{\"Expression\":{\"PropertyVariationSource\":{\"Expression\":{\"SourceRef\":{\"Source\":\"c\"}},\"Name\":\"Variation\",\"Property\":\"date\"}},\"Hierarchy\":\"Date Hierarchy\"}},\"Level\":\"Year\"},\"Name\":\"Calendar.date.Variation.Date Hierarchy.Year\",\"NativeReferenceName\":\"date Year\"},{\"HierarchyLevel\":{\"Expression\":{\"Hierarchy\":{\"Expression\":{\"PropertyVariationSource\":{\"Expression\":{\"SourceRef\":{\"Source\":\"c\"}},\"Name\":\"Variation\",\"Property\":\"date\"}},\"Hierarchy\":\"Date Hierarchy\"}},\"Level\":\"Quarter\"},\"Name\":\"Calendar.date.Variation.Date Hierarchy.Quarter\",\"NativeReferenceName\":\"date Quarter\"},{\"HierarchyLevel\":{\"Expression\":{\"Hierarchy\":{\"Expression\":{\"PropertyVariationSource\":{\"Expression\":{\"SourceRef\":{\"Source\":\"c\"}},\"Name\":\"Variation\",\"Property\":\"date\"}},\"Hierarchy\":\"Date Hierarchy\"}},\"Level\":\"Month\"},\"Name\":\"Calendar.date.Variation.Date Hierarchy.Month\",\"NativeReferenceName\":\"date Month\"},{\"HierarchyLevel\":{\"Expression\":{\"Hierarchy\":{\"Expression\":{\"PropertyVariationSource\":{\"Expression\":{\"SourceRef\":{\"Source\":\"c\"}},\"Name\":\"Variation\",\"Property\":\"date\"}},\"Hierarchy\":\"Date Hierarchy\"}},\"Level\":\"Day\"},\"Name\":\"Calendar.date.Variation.Date Hierarchy.Day\",\"NativeReferenceName\":\"date Day\"}]},\"expansionStates\":[{\"roles\":[\"Rows\"],\"levels\":[{\"queryRefs\":[\"Calendar.date.Variation.Date Hierarchy.Year\"],\"isPinned\":true},{\"queryRefs\":[\"Calendar.date.Variation.Date Hierarchy.Quarter\"],\"isPinned\":true},{\"queryRefs\":[\"Calendar.date.Variation.Date Hierarchy.Month\"],\"isCollapsed\":true,\"isPinned\":true},{\"queryRefs\":[\"Calendar.date.Variation.Date Hierarchy.Day\"],\"isCollapsed\":true}],\"root\":{\"identityValues\":null}}],\"drillFilterOtherVisuals\":true}}",
+          "filters": "[]",
+          "height": 261.05,
+          "width": 1262.77,
+          "x": 17.49,
+          "y": 373.46,
+          "z": 2000.00
+        }
+      ],
+      "width": 1280.00
+    },
+    {
+      "config": "{}",
+      "displayName": "Notes",
+      "displayOption": 1,
+      "filters": "[]",
+      "height": 720.00,
+      "name": "f3bbcc26a32b7cbf0042",
+      "ordinal": 1,
+      "visualContainers": [
+        {
+          "config": "{\"name\":\"144026eb4172da00e779\",\"layouts\":[{\"id\":0,\"position\":{\"x\":66.25,\"y\":197.5,\"z\":7000,\"width\":76.25,\"height\":81.25,\"tabOrder\":7000}}],\"singleVisual\":{\"visualType\":\"actionButton\",\"drillFilterOtherVisuals\":true,\"objects\":{\"icon\":[{\"properties\":{\"shapeType\":{\"expr\":{\"Literal\":{\"Value\":\"'bookmarks'\"}}}},\"selector\":{\"id\":\"default\"}}],\"fill\":[{\"properties\":{\"show\":{\"expr\":{\"Literal\":{\"Value\":\"false\"}}}}},{\"properties\":{\"fillColor\":{\"solid\":{\"color\":{\"expr\":{\"Literal\":{\"Value\":\"'#99e3dd'\"}}}}}},\"selector\":{\"id\":\"default\"}}],\"outline\":[{\"properties\":{\"show\":{\"expr\":{\"Literal\":{\"Value\":\"false\"}}}}}]},\"vcObjects\":{\"background\":[{\"properties\":{\"show\":{\"expr\":{\"Literal\":{\"Value\":\"false\"}}}}}],\"visualLink\":[{\"properties\":{\"bookmark\":{\"expr\":{\"Literal\":{\"Value\":\"'Bookmarke8a6e515014830eb22c5'\"}}},\"show\":{\"expr\":{\"Literal\":{\"Value\":\"true\"}}},\"type\":{\"expr\":{\"Literal\":{\"Value\":\"'Bookmark'\"}}}}}]}}}",
+          "filters": "[]",
+          "height": 81.25,
+          "width": 76.25,
+          "x": 66.25,
+          "y": 197.50,
+          "z": 7000.00
+        },
+        {
+          "config": "{\"name\":\"1953e7543076eb9b3b0c\",\"layouts\":[{\"id\":0,\"position\":{\"x\":140,\"y\":207.5,\"z\":2000,\"width\":906.25,\"height\":82.5,\"tabOrder\":2000}}],\"singleVisual\":{\"visualType\":\"textbox\",\"drillFilterOtherVisuals\":true,\"objects\":{\"general\":[{\"properties\":{\"paragraphs\":[{\"textRuns\":[{\"value\":\"Portland\",\"textStyle\":{\"fontWeight\":\"bold\",\"fontStyle\":\"italic\",\"fontSize\":\"24pt\"}},{\"value\":\" reached \",\"textStyle\":{\"fontStyle\":\"italic\",\"fontSize\":\"24pt\"}},{\"value\":\"566 sales\",\"textStyle\":{\"fontWeight\":\"bold\",\"fontStyle\":\"italic\",\"fontSize\":\"24pt\"}},{\"value\":\" in December to close out the year\",\"textStyle\":{\"fontStyle\":\"italic\",\"fontSize\":\"24pt\"}}]}]}}]}}}",
+          "filters": "[]",
+          "height": 82.50,
+          "width": 906.25,
+          "x": 140.00,
+          "y": 207.50,
+          "z": 2000.00
+        },
+        {
+          "config": "{\"name\":\"6fdbf85548192f8d3139\",\"layouts\":[{\"id\":0,\"position\":{\"x\":141.25,\"y\":101.25,\"z\":4000,\"width\":906.25,\"height\":82.5,\"tabOrder\":4000}}],\"singleVisual\":{\"visualType\":\"textbox\",\"drillFilterOtherVisuals\":true,\"objects\":{\"general\":[{\"properties\":{\"paragraphs\":[{\"textRuns\":[{\"value\":\"PERFORMANCE NOTES\",\"textStyle\":{\"fontWeight\":\"bold\",\"fontSize\":\"24pt\",\"textDecoration\":\"underline\",\"color\":\"#64a37e\"}}]}]}}]}}}",
+          "filters": "[]",
+          "height": 82.50,
+          "width": 906.25,
+          "x": 141.25,
+          "y": 101.25,
+          "z": 4000.00
+        },
+        {
+          "config": "{\"name\":\"9f2463c75040e8ad3368\",\"layouts\":[{\"id\":0,\"position\":{\"x\":141.25,\"y\":318.75,\"z\":1000,\"width\":906.25,\"height\":82.5,\"tabOrder\":1000}}],\"singleVisual\":{\"visualType\":\"textbox\",\"drillFilterOtherVisuals\":true,\"objects\":{\"general\":[{\"properties\":{\"paragraphs\":[{\"textRuns\":[{\"value\":\"High Top\",\"textStyle\":{\"fontWeight\":\"bold\",\"fontStyle\":\"italic\",\"fontSize\":\"24pt\"}},{\"value\":\" product returns doubled in      at a return rate of\",\"textStyle\":{\"fontStyle\":\"italic\",\"fontSize\":\"24pt\"}}]}]}}]}}}",
+          "filters": "[]",
+          "height": 82.50,
+          "width": 906.25,
+          "x": 141.25,
+          "y": 318.75,
+          "z": 1000.00
+        },
+        {
+          "config": "{\"name\":\"cd1ea21ba1ce7a432ba8\",\"layouts\":[{\"id\":0,\"position\":{\"x\":67.5,\"y\":307.5,\"z\":5000,\"width\":76.25,\"height\":81.25,\"tabOrder\":5000}}],\"singleVisual\":{\"visualType\":\"actionButton\",\"drillFilterOtherVisuals\":true,\"objects\":{\"icon\":[{\"properties\":{\"shapeType\":{\"expr\":{\"Literal\":{\"Value\":\"'bookmarks'\"}}}},\"selector\":{\"id\":\"default\"}}],\"fill\":[{\"properties\":{\"show\":{\"expr\":{\"Literal\":{\"Value\":\"false\"}}}}},{\"properties\":{\"fillColor\":{\"solid\":{\"color\":{\"expr\":{\"Literal\":{\"Value\":\"'#99e3dd'\"}}}}}},\"selector\":{\"id\":\"default\"}}],\"outline\":[{\"properties\":{\"show\":{\"expr\":{\"Literal\":{\"Value\":\"false\"}}}}}]},\"vcObjects\":{\"background\":[{\"properties\":{\"show\":{\"expr\":{\"Literal\":{\"Value\":\"false\"}}}}}],\"visualLink\":[{\"properties\":{\"bookmark\":{\"expr\":{\"Literal\":{\"Value\":\"'Bookmarke8a6e515014830eb22c5'\"}}},\"show\":{\"expr\":{\"Literal\":{\"Value\":\"true\"}}},\"type\":{\"expr\":{\"Literal\":{\"Value\":\"'Bookmark'\"}}}}}]}}}",
+          "filters": "[]",
+          "height": 81.25,
+          "width": 76.25,
+          "x": 67.50,
+          "y": 307.50,
+          "z": 5000.00
+        },
+        {
+          "config": "{\"name\":\"d36cfb66f52a851cd0b0\",\"layouts\":[{\"id\":0,\"position\":{\"x\":67.5,\"y\":425,\"z\":6000,\"width\":76.25,\"height\":81.25,\"tabOrder\":6000}}],\"singleVisual\":{\"visualType\":\"actionButton\",\"drillFilterOtherVisuals\":true,\"objects\":{\"icon\":[{\"properties\":{\"shapeType\":{\"expr\":{\"Literal\":{\"Value\":\"'bookmarks'\"}}}},\"selector\":{\"id\":\"default\"}}],\"fill\":[{\"properties\":{\"show\":{\"expr\":{\"Literal\":{\"Value\":\"false\"}}}}},{\"properties\":{\"fillColor\":{\"solid\":{\"color\":{\"expr\":{\"Literal\":{\"Value\":\"'#99e3dd'\"}}}}}},\"selector\":{\"id\":\"default\"}}],\"outline\":[{\"properties\":{\"show\":{\"expr\":{\"Literal\":{\"Value\":\"false\"}}}}}]},\"vcObjects\":{\"background\":[{\"properties\":{\"show\":{\"expr\":{\"Literal\":{\"Value\":\"false\"}}}}}],\"visualLink\":[{\"properties\":{\"bookmark\":{\"expr\":{\"Literal\":{\"Value\":\"'Bookmarke8a6e515014830eb22c5'\"}}},\"show\":{\"expr\":{\"Literal\":{\"Value\":\"true\"}}},\"type\":{\"expr\":{\"Literal\":{\"Value\":\"'Bookmark'\"}}}}}]}}}",
+          "filters": "[]",
+          "height": 81.25,
+          "width": 76.25,
+          "x": 67.50,
+          "y": 425.00,
+          "z": 6000.00
+        },
+        {
+          "config": "{\"name\":\"db55e34ba7eff4baac0a\",\"layouts\":[{\"id\":0,\"position\":{\"x\":141.25,\"y\":436.25,\"z\":3000,\"width\":1090,\"height\":82.5,\"tabOrder\":3000}}],\"singleVisual\":{\"visualType\":\"textbox\",\"drillFilterOtherVisuals\":true,\"objects\":{\"general\":[{\"properties\":{\"paragraphs\":[{\"textRuns\":[{\"value\":\"Deny \",\"textStyle\":{\"fontWeight\":\"bold\",\"fontStyle\":\"italic\",\"fontSize\":\"24pt\"}},{\"value\":\"products drove the strongest overall profit margin (\",\"textStyle\":{\"fontStyle\":\"italic\",\"fontSize\":\"24pt\"}},{\"value\":\"41.98%\",\"textStyle\":{\"fontWeight\":\"bold\",\"fontStyle\":\"italic\",\"fontSize\":\"24pt\"}},{\"value\":\") in 1998\",\"textStyle\":{\"fontStyle\":\"italic\",\"fontSize\":\"24pt\"}}]}]}}]}}}",
+          "filters": "[]",
+          "height": 82.50,
+          "width": 1090.00,
+          "x": 141.25,
+          "y": 436.25,
+          "z": 3000.00
+        },
+        {
+          "config": "{\"name\":\"dfdbf763a56355294741\",\"layouts\":[{\"id\":0,\"position\":{\"x\":130,\"y\":197.5,\"z\":0,\"width\":906.25,\"height\":82.5,\"tabOrder\":0}}],\"singleVisual\":{\"visualType\":\"textbox\",\"drillFilterOtherVisuals\":true,\"objects\":{\"general\":[{\"properties\":{\"paragraphs\":[{\"textRuns\":[{\"value\":\"Portland reached 566 sales in December to close out the year\",\"textStyle\":{\"fontSize\":\"24pt\"}}],\"horizontalTextAlignment\":\"center\"}]}}]}}}",
+          "filters": "[]",
+          "height": 82.50,
+          "width": 906.25,
+          "x": 130.00,
+          "y": 197.50,
+          "z": 0.00
+        }
+      ],
+      "width": 1280.00
+    }
+  ]
+}

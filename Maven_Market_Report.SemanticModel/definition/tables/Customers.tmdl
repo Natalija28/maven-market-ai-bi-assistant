@@ -1,0 +1,234 @@
+table Customers
+	lineageTag: c688ecd9-a297-453b-90a7-f51f935f6ba9
+
+	column customer_id
+		dataType: int64
+		formatString: 0
+		lineageTag: 6b3de54a-25ba-477c-a6a0-9b07ab8aa7cc
+		summarizeBy: none
+		sourceColumn: customer_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column customer_acct_num
+		dataType: string
+		lineageTag: 1efd8a5e-f176-47c0-aaad-39e11f65fb76
+		summarizeBy: none
+		sourceColumn: customer_acct_num
+
+		annotation SummarizationSetBy = Automatic
+
+	column first_name
+		dataType: string
+		lineageTag: 7c272f08-e7a3-4fff-9281-1a870e14887e
+		summarizeBy: none
+		sourceColumn: first_name
+
+		annotation SummarizationSetBy = Automatic
+
+	column last_name
+		dataType: string
+		lineageTag: 93bd96dc-4ebe-4e83-89d9-0bfc8cd4a251
+		summarizeBy: none
+		sourceColumn: last_name
+
+		annotation SummarizationSetBy = Automatic
+
+	column customer_address
+		dataType: string
+		lineageTag: eb77a6ba-bc20-48cd-85a0-65cf74972e86
+		summarizeBy: none
+		sourceColumn: customer_address
+
+		annotation SummarizationSetBy = Automatic
+
+	column city
+		dataType: string
+		lineageTag: 4eaf8926-6c8a-4884-a47c-90e6cabe4693
+		summarizeBy: none
+		sourceColumn: city
+
+		annotation SummarizationSetBy = Automatic
+
+	column customer_state_province
+		dataType: string
+		lineageTag: 9c6b9767-bf4e-4849-a307-29c76c26085a
+		summarizeBy: none
+		sourceColumn: customer_state_province
+
+		annotation SummarizationSetBy = Automatic
+
+	column postal_code
+		dataType: string
+		lineageTag: c6236da3-3903-4878-8492-7b3b54250c85
+		summarizeBy: none
+		sourceColumn: postal_code
+
+		annotation SummarizationSetBy = Automatic
+
+	column country/region
+		dataType: string
+		lineageTag: 559638fd-bcb9-4a91-a682-edba05391c64
+		summarizeBy: none
+		sourceColumn: country/region
+
+		annotation SummarizationSetBy = Automatic
+
+	column birthdate
+		dataType: string
+		lineageTag: fbc35238-9c8a-41f6-bbce-8e8c365b409e
+		summarizeBy: none
+		sourceColumn: birthdate
+
+		annotation SummarizationSetBy = Automatic
+
+	column marital_status
+		dataType: string
+		lineageTag: 9164b3e5-87c9-4757-b8ba-04f6abfd2918
+		summarizeBy: none
+		sourceColumn: marital_status
+
+		annotation SummarizationSetBy = Automatic
+
+	column yearly_income
+		dataType: string
+		lineageTag: d2210a5b-b1d1-4e2e-ac3b-a738290200be
+		summarizeBy: none
+		sourceColumn: yearly_income
+
+		annotation SummarizationSetBy = Automatic
+
+	column gender
+		dataType: string
+		lineageTag: 8ebb3067-4fa9-4d78-904c-96e16a25e510
+		summarizeBy: none
+		sourceColumn: gender
+
+		annotation SummarizationSetBy = Automatic
+
+	column total_children
+		dataType: int64
+		formatString: 0
+		lineageTag: 5279d9e9-5006-4fc7-a41c-4f862478d257
+		summarizeBy: none
+		sourceColumn: total_children
+
+		annotation SummarizationSetBy = Automatic
+
+	column num_children_at_home
+		dataType: int64
+		formatString: 0
+		lineageTag: 841af946-c4af-4036-98c6-b740b4cb7751
+		summarizeBy: none
+		sourceColumn: num_children_at_home
+
+		annotation SummarizationSetBy = Automatic
+
+	column education
+		dataType: string
+		lineageTag: f249a0a1-9334-4de1-b74e-d9f60f642ddb
+		summarizeBy: none
+		sourceColumn: education
+
+		annotation SummarizationSetBy = Automatic
+
+	column acct_open_date
+		dataType: string
+		lineageTag: 1d38f6c4-c52c-4c4c-b081-d0af62eab050
+		summarizeBy: none
+		sourceColumn: acct_open_date
+
+		annotation SummarizationSetBy = Automatic
+
+	column member_card
+		dataType: string
+		lineageTag: a94203b8-c6df-4165-b3fe-6bcc98e9e0a9
+		summarizeBy: none
+		sourceColumn: member_card
+
+		annotation SummarizationSetBy = Automatic
+
+	column occupation
+		dataType: string
+		lineageTag: e9423fa8-8d65-4805-8ef2-f460a5968b88
+		summarizeBy: none
+		sourceColumn: occupation
+
+		annotation SummarizationSetBy = Automatic
+
+	column homeowner
+		dataType: string
+		lineageTag: 3b8e4938-3507-48b9-b900-80e18da9cb4f
+		summarizeBy: none
+		sourceColumn: homeowner
+
+		annotation SummarizationSetBy = Automatic
+
+	column full_name
+		dataType: string
+		lineageTag: 77b71a5a-f614-4753-918f-86e12d148b0f
+		summarizeBy: none
+		sourceColumn: full_name
+
+		annotation SummarizationSetBy = Automatic
+
+	column birth_year
+		dataType: string
+		lineageTag: bb7038e3-0028-4b44-83bf-38708d33fd7e
+		summarizeBy: none
+		sourceColumn: birth_year
+
+		annotation SummarizationSetBy = Automatic
+
+	column has_children
+		dataType: string
+		lineageTag: 04697708-5c6f-4cb3-99b2-f826e0c05e98
+		summarizeBy: none
+		sourceColumn: has_children
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Current Age' = DATEDIFF(Customers[birthdate], TODAY(), YEAR)
+		formatString: 0
+		lineageTag: b4702fb1-312a-4e23-a604-54fb87a75ac2
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column Priority = IF(Customers[homeowner] = "Y" || Customers[member_card] = "Golden", "High", "Standard")
+		lineageTag: 4a7e3df6-e162-48da-9db3-28ce4874573a
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column Short_Country = UPPER(LEFT(Customers[country/region],3))
+		lineageTag: c8312b3f-a9d3-4ebc-b800-9d867ebde3ca
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'House Number' = LEFT(Customers[customer_address], SEARCH(" ",Customers[customer_address]) -1)
+		lineageTag: c6d1d557-c220-4e7c-8613-cd6cf9471b7d
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Customers = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents("C:\Users\NatalijaSuharevska\OneDrive - Direct Medics Ltd\Desktop\Power BI_Dev_Maven Market\MavenMarket_Customers.csv"),[Delimiter=",", Columns=20, Encoding=1252, QuoteStyle=QuoteStyle.None]),
+				    #"Promoted Headers" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+				    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"customer_id", Int64.Type}, {"customer_acct_num", type text}, {"first_name", type text}, {"last_name", type text}, {"customer_address", type text}, {"customer_city", type text}, {"customer_state_province", type text}, {"customer_postal_code", type text}, {"customer_country", type text}, {"birthdate", type text}, {"marital_status", type text}, {"yearly_income", type text}, {"gender", type text}, {"total_children", Int64.Type}, {"num_children_at_home", Int64.Type}, {"education", type text}, {"acct_open_date", type text}, {"member_card", type text}, {"occupation", type text}, {"homeowner", type text}}),
+				    #"Inserted Merged Column" = Table.AddColumn(#"Changed Type", "Full Name", each Text.Combine({[first_name], " ", [last_name]}), type text),
+				    #"Renamed Columns" = Table.RenameColumns(#"Inserted Merged Column",{{"Full Name", "full_name"}}),
+				    #"Inserted Text After Delimiter" = Table.AddColumn(#"Renamed Columns", "birth_year", each Text.AfterDelimiter([birthdate], "/", 1), type text),
+				    #"Added Conditional Column" = Table.AddColumn(#"Inserted Text After Delimiter", "has_children", each if [total_children] = 0 then "N" else "Y"),
+				    #"Renamed Columns1" = Table.RenameColumns(#"Added Conditional Column",{{"customer_city", "city"}, {"customer_postal_code", "postal_code"}, {"customer_country", "country/region"}})
+				in
+				    #"Renamed Columns1"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

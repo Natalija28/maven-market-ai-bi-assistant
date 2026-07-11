@@ -1,0 +1,154 @@
+table Stores
+	lineageTag: ba80db2e-da92-4ecc-92a7-0df2c2aa7f7f
+
+	column store_id
+		dataType: int64
+		formatString: 0
+		lineageTag: 1b46498e-3583-4a6a-b2b8-790d5db97559
+		summarizeBy: none
+		sourceColumn: store_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column region_id
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 491873f2-6eb5-40aa-9536-54a134dd6bcc
+		summarizeBy: none
+		sourceColumn: region_id
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column store_type
+		dataType: string
+		lineageTag: 25ef0cf6-921e-48b7-8d2e-d44db4c0d33b
+		summarizeBy: none
+		sourceColumn: store_type
+
+		annotation SummarizationSetBy = Automatic
+
+	column store_name
+		dataType: string
+		lineageTag: a16ae569-dab6-463e-9c4d-13af152aac7a
+		summarizeBy: none
+		sourceColumn: store_name
+
+		annotation SummarizationSetBy = Automatic
+
+	column store_street_address
+		dataType: string
+		lineageTag: 561d82ff-3695-43aa-8f7a-6d42cfb8d82e
+		summarizeBy: none
+		sourceColumn: store_street_address
+
+		annotation SummarizationSetBy = Automatic
+
+	column City
+		dataType: string
+		lineageTag: 3c097d5d-589a-488c-b793-b7d0cec78733
+		summarizeBy: none
+		sourceColumn: City
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'State and Province'
+		dataType: string
+		lineageTag: e83b9ac9-a7bc-48a7-b1cc-e7e98d0f27da
+		summarizeBy: none
+		sourceColumn: State and Province
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Country and Region'
+		dataType: string
+		lineageTag: a17c2a42-0ab8-4b36-94ce-68ed7d63fe1e
+		summarizeBy: none
+		sourceColumn: Country and Region
+
+		annotation SummarizationSetBy = Automatic
+
+	column store_phone
+		dataType: string
+		lineageTag: b8158ae7-81bb-4219-a417-47e25033f282
+		summarizeBy: none
+		sourceColumn: store_phone
+
+		annotation SummarizationSetBy = Automatic
+
+	column first_opened_date
+		dataType: string
+		lineageTag: a9fed317-c81d-4feb-91aa-e33fb04f6adf
+		summarizeBy: none
+		sourceColumn: first_opened_date
+
+		annotation SummarizationSetBy = Automatic
+
+	column last_remodel_date
+		dataType: string
+		lineageTag: 19250df1-1a9b-4fa4-840b-2d3b878e4ae1
+		summarizeBy: none
+		sourceColumn: last_remodel_date
+
+		annotation SummarizationSetBy = Automatic
+
+	column total_sqft
+		dataType: int64
+		formatString: 0
+		lineageTag: 0b803899-59ed-4fa7-8739-fa0cc59d2ee2
+		summarizeBy: sum
+		sourceColumn: total_sqft
+
+		annotation SummarizationSetBy = Automatic
+
+	column grocery_sqft
+		dataType: int64
+		formatString: 0
+		lineageTag: 1edc9ee3-d69f-4118-be14-3708cfebce7c
+		summarizeBy: sum
+		sourceColumn: grocery_sqft
+
+		annotation SummarizationSetBy = Automatic
+
+	column Address
+		dataType: string
+		lineageTag: bd116a10-e884-4f1a-97b3-b6b3f997590b
+		summarizeBy: none
+		sourceColumn: Address
+
+		annotation SummarizationSetBy = Automatic
+
+	column area_code
+		dataType: string
+		lineageTag: 11e9a820-4327-412d-a8bf-8e5549e4fd31
+		summarizeBy: none
+		sourceColumn: area_code
+
+		annotation SummarizationSetBy = Automatic
+
+	column Years_Since_Remodel = DATEDIFF(Stores[last_remodel_date], TODAY(), YEAR)
+		formatString: 0
+		lineageTag: 1b88abde-7d5f-4eb8-9ee1-79ff48102593
+		summarizeBy: sum
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Stores = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents("C:\Users\NatalijaSuharevska\OneDrive - Direct Medics Ltd\Desktop\Power BI_Dev_Maven Market\MavenMarket_Stores.csv"),[Delimiter=",", Columns=13, Encoding=1252, QuoteStyle=QuoteStyle.None]),
+				    #"Promoted Headers" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+				    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"store_id", Int64.Type}, {"region_id", Int64.Type}, {"store_type", type text}, {"store_name", type text}, {"store_street_address", type text}, {"store_city", type text}, {"store_state", type text}, {"store_country", type text}, {"store_phone", type text}, {"first_opened_date", type text}, {"last_remodel_date", type text}, {"total_sqft", Int64.Type}, {"grocery_sqft", Int64.Type}}),
+				    #"Inserted Merged Column" = Table.AddColumn(#"Changed Type", "full_address", each Text.Combine({[store_city], ", ", [store_state], ", ", [store_country]}), type text),
+				    #"Inserted Text Before Delimiter" = Table.AddColumn(#"Inserted Merged Column", "Text Before Delimiter", each Text.BeforeDelimiter([store_phone], "-"), type text),
+				    #"Renamed Columns" = Table.RenameColumns(#"Inserted Text Before Delimiter",{{"Text Before Delimiter", "area_code"}, {"store_city", "City"}, {"store_state", "State and Province"}, {"store_country", "Country and Region"}, {"full_address", "Address"}})
+				in
+				    #"Renamed Columns"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

@@ -1,0 +1,8 @@
+{
+  "version": "4.0",
+  "datasetReference": {
+    "byPath": {
+      "path": "../Maven_Market_Report.SemanticModel"
+    }
+  }
+}
