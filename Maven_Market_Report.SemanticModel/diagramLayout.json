@@ -101,7 +101,7 @@
         }
       ],
       "name": "All tables",
-      "zoomValue": 90,
+      "zoomValue": 80,
       "pinKeyFieldsToTop": false,
       "showExtraHeaderInfo": false,
       "hideKeyFieldsWhenCollapsed": false,

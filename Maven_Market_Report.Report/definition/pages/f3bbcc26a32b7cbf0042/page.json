@@ -1,0 +1,8 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/page/1.3.0/schema.json",
+  "name": "f3bbcc26a32b7cbf0042",
+  "displayName": "Notes",
+  "displayOption": "FitToPage",
+  "height": 720,
+  "width": 1280
+}
