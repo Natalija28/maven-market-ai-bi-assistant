@@ -65,12 +65,14 @@ def format_percent(value: float) -> str:
 REPO_ROOT = Path(__file__).resolve().parent.parent
 
 
-def discover_data_files(workspace_ROOT: Path):
-    product_files = sorted(REPO_ROOT.rglob("*product*.csv"), key=lambda p: str(p))
-    transaction_files = sorted(REPO_ROOT.rglob("*transaction*.csv"), key=lambda p: str(p))
-    returns_files = sorted(REPO_ROOT.rglob("*return*.csv"), key=lambda p: str(p))
-    store_files = sorted(REPO_ROOT.rglob("*store*.csv"), key=lambda p: str(p))
-    region_files = sorted(REPO_ROOT.rglob("*region*.csv"), key=lambda p: str(p))
+def discover_data_files(workspace_root: Path):
+    csv_files = sorted(workspace_root.rglob("*.csv"), key=lambda p: str(p))
+
+    product_files = [p for p in csv_files if "product" in p.name.lower() and "customer" not in p.name.lower()]
+    transaction_files = [p for p in csv_files if "transaction" in p.name.lower()]
+    returns_files = [p for p in csv_files if "return" in p.name.lower()]
+    store_files = [p for p in csv_files if "store" in p.name.lower()]
+    region_files = [p for p in csv_files if "region" in p.name.lower()]
 
     return {
         "products": product_files,
