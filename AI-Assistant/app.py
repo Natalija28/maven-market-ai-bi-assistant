@@ -62,13 +62,15 @@ def format_currency(value: float) -> str:
 def format_percent(value: float) -> str:
     return f"{value:.1%}" if pd.notna(value) else "n/a"
 
+REPO_ROOT = Path(__file__).resolve().parent.parent
 
-def discover_data_files(workspace_root: Path):
-    product_files = sorted(workspace_root.rglob("*product*.csv"), key=lambda p: str(p))
-    transaction_files = sorted(workspace_root.rglob("*transaction*.csv"), key=lambda p: str(p))
-    returns_files = sorted(workspace_root.rglob("*return*.csv"), key=lambda p: str(p))
-    store_files = sorted(workspace_root.rglob("*store*.csv"), key=lambda p: str(p))
-    region_files = sorted(workspace_root.rglob("*region*.csv"), key=lambda p: str(p))
+
+def discover_data_files(workspace_ROOT: Path):
+    product_files = sorted(REPO_ROOT.rglob("*product*.csv"), key=lambda p: str(p))
+    transaction_files = sorted(REPO_ROOT.rglob("*transaction*.csv"), key=lambda p: str(p))
+    returns_files = sorted(REPO_ROOT.rglob("*return*.csv"), key=lambda p: str(p))
+    store_files = sorted(REPO_ROOT.rglob("*store*.csv"), key=lambda p: str(p))
+    region_files = sorted(REPO_ROOT.rglob("*region*.csv"), key=lambda p: str(p))
 
     return {
         "products": product_files,
