@@ -32,7 +32,7 @@
             "height": 300,
             "width": 234
           },
-          "zIndex": 7
+          "zIndex": 6
         },
         {
           "location": {
@@ -94,14 +94,14 @@
           "nodeIndex": "Transaction Data",
           "nodeLineageTag": "5a271141-68f4-407d-9e80-b4390b1ba115",
           "size": {
-            "height": 245,
+            "height": 366.42857142857144,
             "width": 234
           },
-          "zIndex": 6
+          "zIndex": 7
         }
       ],
       "name": "All tables",
-      "zoomValue": 80,
+      "zoomValue": 70,
       "pinKeyFieldsToTop": false,
       "showExtraHeaderInfo": false,
       "hideKeyFieldsWhenCollapsed": false,

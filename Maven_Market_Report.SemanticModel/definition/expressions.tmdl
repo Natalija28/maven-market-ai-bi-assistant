@@ -1,6 +1,6 @@
 expression 'Sample File' =
 		let
-		    Source = Folder.Files("C:\Users\NatalijaSuharevska\OneDrive - Direct Medics Ltd\Desktop\Power BI_Dev_Maven Market\MavenMarket Transactions"),
+		    Source = Folder.Files("C:\AI-PowerBI-Lab_NS\Projects\Maven Market\MavenMarket Transactions"),
 		    Navigation1 = Source{0}[Content]
 		in
 		    Navigation1
@@ -8,6 +8,8 @@ expression 'Sample File' =
 	queryGroup: 'Transform File from MavenMarket Transactions\Helper Queries'
 
 	annotation PBI_ResultType = Binary
+
+	annotation PBI_NavigationStepName = Navigation
 
 expression Parameter1 = #"Sample File" meta [IsParameterQuery=true, BinaryIdentifier=#"Sample File", Type="Binary", IsParameterQueryRequired=true]
 	lineageTag: 13a959c5-b5a8-483d-81e9-9d52a39c87db

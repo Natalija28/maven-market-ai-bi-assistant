@@ -1,23 +1,20 @@
 table Calendar
 	lineageTag: b103e3f9-77be-4525-a6c5-388fc625b273
+	dataCategory: Time
 
 	column date
 		dataType: dateTime
-		formatString: d/m/yyyy
+		isKey
+		formatString: dd/mm/yy
 		lineageTag: 75effd28-eaff-4278-b974-9b953caf0d78
 		summarizeBy: none
 		sourceColumn: date
-
-		variation Variation
-			isDefault
-			relationship: 5bce1bfd-2633-41d2-84b9-ded54429c88a
-			defaultHierarchy: LocalDateTable_4dde7c04-65d4-4d63-bdce-6c03be865e7a.'Date Hierarchy'
 
 		annotation SummarizationSetBy = Automatic
 
 		annotation UnderlyingDateTimeDataType = Date
 
-		annotation PBI_FormatHint = {"isCustom":true}
+		annotation PBI_FormatHint = {"isDateTimeCustom":true}
 
 	column 'Start of Week'
 		dataType: dateTime
@@ -25,11 +22,6 @@ table Calendar
 		lineageTag: 99a66f9f-9e85-4c83-b5cf-81eea0668041
 		summarizeBy: none
 		sourceColumn: Start of Week
-
-		variation Variation
-			isDefault
-			relationship: ee4fe129-e504-4969-b5de-aad138963597
-			defaultHierarchy: LocalDateTable_6a1624bb-eb54-4587-9c99-152505c61a07.'Date Hierarchy'
 
 		annotation SummarizationSetBy = Automatic
 
@@ -50,22 +42,9 @@ table Calendar
 		summarizeBy: none
 		sourceColumn: Start of Month
 
-		variation Variation
-			isDefault
-			relationship: 1a08c0be-1e51-45e4-bbda-8edb90f7d461
-			defaultHierarchy: LocalDateTable_f5932301-3275-4261-8349-37afc5ae35a7.'Date Hierarchy'
-
 		annotation SummarizationSetBy = Automatic
 
 		annotation UnderlyingDateTimeDataType = Date
-
-	column 'Month Name'
-		dataType: string
-		lineageTag: 63d1bf63-e84d-477c-823d-83a1a09fbb15
-		summarizeBy: none
-		sourceColumn: Month Name
-
-		annotation SummarizationSetBy = Automatic
 
 	column Quarter
 		dataType: int64
@@ -73,15 +52,6 @@ table Calendar
 		lineageTag: 7a4856b6-424a-4500-998d-4860ed8e8a14
 		summarizeBy: sum
 		sourceColumn: Quarter
-
-		annotation SummarizationSetBy = Automatic
-
-	column Year
-		dataType: int64
-		formatString: 0
-		lineageTag: ac3e02e3-13f6-48e9-ad46-91d9026c02a0
-		summarizeBy: sum
-		sourceColumn: Year
 
 		annotation SummarizationSetBy = Automatic
 
@@ -110,24 +80,64 @@ table Calendar
 		summarizeBy: none
 		sourceColumn: End of Month
 
-		variation Variation
-			isDefault
-			relationship: d82eb98d-0578-4c60-b1d0-4ac5938354cf
-			defaultHierarchy: LocalDateTable_c713703e-220f-4910-9a53-ffa138e4836a.'Date Hierarchy'
-
 		annotation SummarizationSetBy = Automatic
 
 		annotation UnderlyingDateTimeDataType = Date
+
+	column 'Month Year'
+		dataType: string
+		lineageTag: 94da2ef2-72db-4bdb-873c-9dd0ab91357a
+		summarizeBy: none
+		sourceColumn: Month Year
+		sortByColumn: 'Start of Month'
+
+		changedProperty = SortByColumn
+
+		annotation SummarizationSetBy = Automatic
+
+	column Month = FORMAT('Calendar'[date], "MMMM")
+		lineageTag: 53cff7fe-bbc6-4c55-bb66-f4135abfd515
+		summarizeBy: none
+		sortByColumn: 'Month Number'
+
+		changedProperty = SortByColumn
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Month Number' = MONTH('Calendar'[date])
+		formatString: 0
+		lineageTag: 2dd90084-28c9-4b79-85ce-8484ef90feaa
+		summarizeBy: sum
+
+		annotation SummarizationSetBy = Automatic
+
+	column Year = YEAR('Calendar'[date])
+		formatString: 0
+		lineageTag: 89c572d2-6b82-4859-9924-70041542b7e9
+		summarizeBy: sum
+
+		annotation SummarizationSetBy = Automatic
+
+	hierarchy 'date Hierarchy'
+		lineageTag: 8e210d45-c9ed-4af5-ab6c-d83d271bc942
+
+		level date
+			lineageTag: 35614853-01e8-4a3d-bf75-67d21ba92fb7
+			column: date
+
+		level 'Month Year'
+			lineageTag: eb915d29-b41a-4a5d-994f-9fb45f5b24a4
+			column: 'Month Year'
 
 	partition Calendar = m
 		mode: import
 		source =
 				let
-				    Source = Csv.Document(File.Contents("C:\Users\NatalijaSuharevska\OneDrive - Direct Medics Ltd\Desktop\Power BI_Dev_Maven Market\MavenMarket_Calendar.csv"),[Delimiter=",", Columns=1, Encoding=1252, QuoteStyle=QuoteStyle.None]),
+				    Source = Csv.Document(File.Contents("C:\AI-PowerBI-Lab_NS\Projects\Maven Market\MavenMarket_Calendar.csv"),[Delimiter=",", Columns=1, Encoding=1252, QuoteStyle=QuoteStyle.None]),
 				    #"Changed Type" = Table.TransformColumnTypes(Source,{{"Column1", type text}}),
 				    #"Promoted Headers" = Table.PromoteHeaders(#"Changed Type", [PromoteAllScalars=true]),
-				    #"Changed Type1" = Table.TransformColumnTypes(#"Promoted Headers",{{"date", type date}}),
-				    #"Inserted Start of Week" = Table.AddColumn(#"Changed Type1", "Start of Week", each Date.StartOfWeek([date]), type date),
+				    #"Changed Type with Locale" = Table.TransformColumnTypes(#"Promoted Headers", {{"date", type date}}, "en-GB"),
+				    #"Inserted Start of Week" = Table.AddColumn(#"Changed Type with Locale", "Start of Week", each Date.StartOfWeek([date]), type date),
 				    #"Inserted Day Name" = Table.AddColumn(#"Inserted Start of Week", "Day Name", each Date.DayOfWeekName([Start of Week]), type text),
 				    #"Inserted Start of Month" = Table.AddColumn(#"Inserted Day Name", "Start of Month", each Date.StartOfMonth([Start of Week]), type date),
 				    #"Inserted Month Name" = Table.AddColumn(#"Inserted Start of Month", "Month Name", each Date.MonthName([Start of Week]), type text),
@@ -135,9 +145,15 @@ table Calendar
 				    #"Inserted Year" = Table.AddColumn(#"Inserted Quarter", "Year", each Date.Year([Start of Week]), Int64.Type),
 				    #"Inserted Day Name1" = Table.AddColumn(#"Inserted Year", "Day Name.1", each Date.DayOfWeekName([date]), type text),
 				    #"Renamed Columns" = Table.RenameColumns(#"Inserted Day Name1",{{"Day Name.1", "Name of Day"}}),
-				    #"Inserted End of Month" = Table.AddColumn(#"Renamed Columns", "End of Month", each Date.EndOfMonth([date]), type date)
+				    #"Inserted End of Month" = Table.AddColumn(#"Renamed Columns", "End of Month", each Date.EndOfMonth([date]), type date),
+				    #"Split Column by Position" = Table.SplitColumn(#"Inserted End of Month", "Month Name", Splitter.SplitTextByPositions({0, 3}, false), {"Month Name.1", "Month Name.2"}),
+				    #"Changed Type1" = Table.TransformColumnTypes(#"Split Column by Position",{{"Month Name.1", type text}, {"Month Name.2", type text}}),
+				    #"Removed Columns" = Table.RemoveColumns(#"Changed Type1",{"Month Name.2"}),
+				    #"Renamed Columns1" = Table.RenameColumns(#"Removed Columns",{{"Month Name.1", "Month Name"}}),
+				    #"Merged Columns" = Table.CombineColumns(Table.TransformColumnTypes(#"Renamed Columns1", {{"Year", type text}}, "en-GB"),{"Month Name", "Year"},Combiner.CombineTextByDelimiter(" ", QuoteStyle.None),"Merged"),
+				    #"Renamed Columns2" = Table.RenameColumns(#"Merged Columns",{{"Merged", "Month Year"}})
 				in
-				    #"Inserted End of Month"
+				    #"Renamed Columns2"
 
 	annotation PBI_NavigationStepName = Navigation
 

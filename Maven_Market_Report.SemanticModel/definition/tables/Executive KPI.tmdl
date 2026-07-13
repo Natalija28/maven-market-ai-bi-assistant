@@ -1,0 +1,50 @@
+table 'Executive KPI'
+	lineageTag: 128c81f4-1644-4457-a583-716a6535d226
+
+	column 'Executive KPI'
+		lineageTag: 2393f295-e041-4bb1-b788-6793516af64a
+		summarizeBy: none
+		sourceColumn: [Value1]
+		sortByColumn: 'Executive KPI Order'
+
+		relatedColumnDetails
+			groupByColumn: 'Executive KPI Fields'
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Executive KPI Fields'
+		isHidden
+		lineageTag: 5cd9af46-5fdd-4e7c-bda0-a958eba2c7ff
+		summarizeBy: none
+		sourceColumn: [Value2]
+		sortByColumn: 'Executive KPI Order'
+
+		extendedProperty ParameterMetadata =
+				{
+				  "version": 3,
+				  "kind": 2
+				}
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Executive KPI Order'
+		isHidden
+		formatString: 0
+		lineageTag: 645adf7e-7101-4162-9158-4b32e58f4590
+		summarizeBy: sum
+		sourceColumn: [Value3]
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'Executive KPI' = calculated
+		mode: import
+		source =
+				{
+				    ("Total Revenue", NAMEOF('Transaction Data'[Total Revenue]), 0),
+				    ("Total Profit", NAMEOF('Transaction Data'[Total Profit]), 1),
+				    ("Profit Margin", NAMEOF('Transaction Data'[Profit Margin]), 2),
+				    ("Total Transactions", NAMEOF('Transaction Data'[Total Transactions]), 3)
+				}
+
+	annotation PBI_Id = 3aef82a6785b46bab0fb8bfc90600b38
+

@@ -2,8 +2,7 @@ table Stores
 	lineageTag: ba80db2e-da92-4ecc-92a7-0df2c2aa7f7f
 
 	column store_id
-		dataType: int64
-		formatString: 0
+		dataType: string
 		lineageTag: 1b46498e-3583-4a6a-b2b8-790d5db97559
 		summarizeBy: none
 		sourceColumn: store_id
@@ -11,9 +10,7 @@ table Stores
 		annotation SummarizationSetBy = Automatic
 
 	column region_id
-		dataType: int64
-		isHidden
-		formatString: 0
+		dataType: string
 		lineageTag: 491873f2-6eb5-40aa-9536-54a134dd6bcc
 		summarizeBy: none
 		sourceColumn: region_id
@@ -139,14 +136,15 @@ table Stores
 		mode: import
 		source =
 				let
-				    Source = Csv.Document(File.Contents("C:\Users\NatalijaSuharevska\OneDrive - Direct Medics Ltd\Desktop\Power BI_Dev_Maven Market\MavenMarket_Stores.csv"),[Delimiter=",", Columns=13, Encoding=1252, QuoteStyle=QuoteStyle.None]),
+				    Source = Csv.Document(File.Contents("C:\AI-PowerBI-Lab_NS\Projects\Maven Market\MavenMarket_Stores.csv"),[Delimiter=",", Columns=13, Encoding=1252, QuoteStyle=QuoteStyle.None]),
 				    #"Promoted Headers" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
 				    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"store_id", Int64.Type}, {"region_id", Int64.Type}, {"store_type", type text}, {"store_name", type text}, {"store_street_address", type text}, {"store_city", type text}, {"store_state", type text}, {"store_country", type text}, {"store_phone", type text}, {"first_opened_date", type text}, {"last_remodel_date", type text}, {"total_sqft", Int64.Type}, {"grocery_sqft", Int64.Type}}),
 				    #"Inserted Merged Column" = Table.AddColumn(#"Changed Type", "full_address", each Text.Combine({[store_city], ", ", [store_state], ", ", [store_country]}), type text),
 				    #"Inserted Text Before Delimiter" = Table.AddColumn(#"Inserted Merged Column", "Text Before Delimiter", each Text.BeforeDelimiter([store_phone], "-"), type text),
-				    #"Renamed Columns" = Table.RenameColumns(#"Inserted Text Before Delimiter",{{"Text Before Delimiter", "area_code"}, {"store_city", "City"}, {"store_state", "State and Province"}, {"store_country", "Country and Region"}, {"full_address", "Address"}})
+				    #"Renamed Columns" = Table.RenameColumns(#"Inserted Text Before Delimiter",{{"Text Before Delimiter", "area_code"}, {"store_city", "City"}, {"store_state", "State and Province"}, {"store_country", "Country and Region"}, {"full_address", "Address"}}),
+				    #"Changed Type1" = Table.TransformColumnTypes(#"Renamed Columns",{{"store_id", type text}, {"region_id", type text}})
 				in
-				    #"Renamed Columns"
+				    #"Changed Type1"
 
 	annotation PBI_NavigationStepName = Navigation
 

@@ -1,7 +1,7 @@
 table 'Transaction Data'
 	lineageTag: 5a271141-68f4-407d-9e80-b4390b1ba115
 
-	measure 'Quantity Sold' = CALCULATE(SUM('Transaction Data'[quantity]))
+	measure 'Quantity Sold' = CALCULATE(SUM('Transaction Data'[File.quantity]))
 		formatString: #,0
 		lineageTag: 6368bf60-009e-437c-b2ec-f1d51d7e16e0
 
@@ -10,14 +10,16 @@ table 'Transaction Data'
 		lineageTag: 19a8e63a-b4b3-4d75-999f-5eef2dc644d3
 
 	measure 'Total Profit' = [Total Revenue] - [Total Cost]
-		formatString: \$#,0;(\$#,0);\$#,0
+		formatString: #,0
 		lineageTag: c4b14fde-d29b-41f8-bbfa-d8c369c791db
 
-		annotation PBI_FormatHint = {"currencyCulture":"en-US"}
+		annotation PBI_FormatHint = {"isDecimal":true}
 
 	measure 'Total Transactions' = COUNTROWS('Transaction Data')
 		formatString: #,0
 		lineageTag: 0bf923a8-cf25-462b-9b8f-563fb26ce020
+
+		annotation PBI_FormatHint = {"isDecimal":true}
 
 	measure '% Weekend Transactions' = [Weekend Transactions]/[Total Transactions]
 		formatString: 0.00%;-0.00%;0.00%
@@ -27,13 +29,11 @@ table 'Transaction Data'
 		formatString: #,0
 		lineageTag: 783b526f-8fa2-4eb2-bc2e-d31095aebad1
 
-	measure 'Total Revenue' = SUMX('Transaction Data','Transaction Data'[quantity] * RELATED(Products[product_retail_price]))
-		formatString: \$#,0;(\$#,0);\$#,0
+	measure 'Total Revenue' = SUMX('Transaction Data','Transaction Data'[File.quantity] * RELATED(Products[product_retail_price]))
+		formatString: #,0.00
 		lineageTag: 21657a8e-3bf7-404b-bea1-777c6e5a8198
 
-		annotation PBI_FormatHint = {"currencyCulture":"en-US"}
-
-	measure 'Total Cost' = SUMX('Transaction Data','Transaction Data'[quantity] * RELATED(Products[product_cost]))
+	measure 'Total Cost' = SUMX('Transaction Data','Transaction Data'[File.quantity] * RELATED(Products[product_cost]))
 		formatString: \$#,0.0;(\$#,0.0);\$#,0.0
 		lineageTag: 55265d8c-bf38-40cd-8880-a951e527e42d
 
@@ -63,109 +63,139 @@ table 'Transaction Data'
 
 		annotation PBI_FormatHint = {"currencyCulture":"en-US"}
 
-	measure 'Last Month Profit' = CALCULATE([Total Profit],DATEADD('Calendar'[date],-1,MONTH))
-		formatString: \$#,0;(\$#,0);\$#,0
+	measure 'Last Month Profit' = CALCULATE('Transaction Data'[Total Profit],DATEADD('Calendar'[date],-1,MONTH))
 		lineageTag: 2a4835a7-0eb1-49b5-894f-892735ce92a6
 
-		annotation PBI_FormatHint = {"currencyCulture":"en-US"}
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
 	measure 'Revenue Target' = [Last Month Revenue]*1.05
 		formatString: \$#,0;(\$#,0);\$#,0
 		lineageTag: 7b7bcb93-93fa-4818-b031-2654d49af864
 
 	measure 'Profit Margin' = [Total Cost]/[Total Revenue]
-		formatString: 0.00%;-0.00%;0.00%
+		formatString: #,0.00%;-#,0.00%;#,0.00%
 		lineageTag: af62e103-0068-4858-aa8c-22febaba26cb
 
-	column transaction_date
-		dataType: dateTime
-		isHidden
-		formatString: Long Date
-		lineageTag: e621f9a1-9513-41c4-9fa2-dbd3bb3b28aa
-		summarizeBy: none
-		sourceColumn: transaction_date
+	measure 'Revenue Change %' = DIVIDE([Total Revenue] - [Last Month Revenue],[Last Month Revenue])
+		formatString: 0.0%;-0.0%;0.0%
+		lineageTag: 6c870a21-4d94-446f-94d3-e85818f96448
 
-		changedProperty = IsHidden
+	measure 'Revenue Variance Label' = ```
+			
+			VAR ChangePercent = [Revenue Change %]
+			RETURN
+			    SWITCH(
+			        TRUE(),
+			        ISBLANK(ChangePercent), "No previous month",
+			        ChangePercent > 0, "▲ " & FORMAT(ChangePercent, "0.0%") & " vs previous month",
+			        ChangePercent < 0, "▼ " & FORMAT(ABS(ChangePercent), "0.0%") & " vs previous month",
+			        "● 0.0% vs previous month"
+			    )
+			
+			```
+		lineageTag: 4ceeab2f-aeb5-40cb-9ede-e6ac993159a6
+
+	measure 'Revenue Variance Colour' = ```
+			
+			SWITCH(
+			    TRUE(),
+			    ISBLANK([Revenue Change %]), "#6B7280",
+			    [Revenue Change %] > 0, "#16803C",
+			    [Revenue Change %] < 0, "#C62828",
+			    "#6B7280"
+			)
+			
+			```
+		lineageTag: ca09a691-7da9-42a4-a97f-b17faa7daec4
+
+	column 'Source.Name'
+		dataType: string
+		lineageTag: d8328639-3340-4fa1-af4c-5984e7a61fe1
+		summarizeBy: none
+		sourceColumn: Source.Name
+
+		annotation SummarizationSetBy = Automatic
+
+	column Transaction_date
+		dataType: dateTime
+		formatString: dd/mm/yy
+		lineageTag: 581c5b5a-6cc4-4ef8-899f-889b013477dd
+		summarizeBy: none
+		sourceColumn: Transaction_date
 
 		annotation SummarizationSetBy = Automatic
 
 		annotation UnderlyingDateTimeDataType = Date
 
-	column stock_date
-		dataType: dateTime
-		isHidden
-		formatString: d/m/yyyy
-		lineageTag: 1a672ebc-873b-498f-a903-a595e0e90f4d
-		summarizeBy: none
-		sourceColumn: stock_date
+		annotation PBI_FormatHint = {"isDateTimeCustom":true}
 
-		changedProperty = IsHidden
+	column Stock_date
+		dataType: dateTime
+		formatString: dd/mm/yy
+		lineageTag: 58f5130e-ff02-4dff-837f-ff8abb0bd03b
+		summarizeBy: none
+		sourceColumn: Stock_date
 
 		annotation SummarizationSetBy = Automatic
 
 		annotation UnderlyingDateTimeDataType = Date
 
-		annotation PBI_FormatHint = {"isCustom":true}
+		annotation PBI_FormatHint = {"isDateTimeCustom":true}
 
-	column product_id
-		dataType: int64
-		isHidden
-		formatString: 0
-		lineageTag: e006f88f-13c7-4b91-a8e1-8bb8faf0e0ba
+	column Product_id
+		dataType: string
+		lineageTag: ed251080-5dba-4357-9b18-d882c164a59b
 		summarizeBy: none
-		sourceColumn: product_id
-
-		changedProperty = IsHidden
+		sourceColumn: Product_id
 
 		annotation SummarizationSetBy = Automatic
 
-	column customer_id
-		dataType: int64
-		isHidden
-		formatString: 0
-		lineageTag: 9fc7ccff-8a6f-4b3e-9055-7b5b8fbb952b
+	column Customer_id
+		dataType: string
+		lineageTag: 1e07001d-afad-4545-bc26-558e8ed74938
 		summarizeBy: none
-		sourceColumn: customer_id
-
-		changedProperty = IsHidden
+		sourceColumn: Customer_id
 
 		annotation SummarizationSetBy = Automatic
 
-	column store_id
-		dataType: int64
-		isHidden
-		formatString: 0
-		lineageTag: 387567a8-8d2f-416e-b096-4481a4880f3b
+	column Store_id
+		dataType: string
+		lineageTag: 83cb2d31-45e1-4fe3-b0fb-34614dabee03
 		summarizeBy: none
-		sourceColumn: store_id
-
-		changedProperty = IsHidden
+		sourceColumn: Store_id
 
 		annotation SummarizationSetBy = Automatic
 
-	column quantity
-		dataType: int64
-		formatString: 0
-		lineageTag: 5420add2-8710-45eb-a1e7-f9a183732756
+	column 'File.quantity'
+		dataType: double
+		lineageTag: 3492f0cf-3cfb-4c8b-b545-026967b8c9f3
 		summarizeBy: sum
-		sourceColumn: quantity
+		sourceColumn: File.quantity
 
 		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
 	partition 'Transaction Data' = m
 		mode: import
 		source =
 				let
-				    Source = Folder.Files("C:\Users\NatalijaSuharevska\OneDrive - Direct Medics Ltd\Desktop\Power BI_Dev_Maven Market\MavenMarket Transactions"),
+				    Source = Folder.Files("C:\AI-PowerBI-Lab_NS\Projects\Maven Market\MavenMarket Transactions"),
 				    #"Filtered Hidden Files1" = Table.SelectRows(Source, each [Attributes]?[Hidden]? <> true),
 				    #"Invoke Custom Function1" = Table.AddColumn(#"Filtered Hidden Files1", "Transform File", each #"Transform File"([Content])),
 				    #"Renamed Columns1" = Table.RenameColumns(#"Invoke Custom Function1", {"Name", "Source.Name"}),
 				    #"Removed Other Columns1" = Table.SelectColumns(#"Renamed Columns1", {"Source.Name", "Transform File"}),
-				    #"Expanded Table Column1" = Table.ExpandTableColumn(#"Removed Other Columns1", "Transform File", Table.ColumnNames(#"Transform File"(#"Sample File"))),
-				    #"Changed Type" = Table.TransformColumnTypes(#"Expanded Table Column1",{{"Source.Name", type text}, {"transaction_date", type date}, {"stock_date", type date}, {"product_id", Int64.Type}, {"customer_id", Int64.Type}, {"store_id", Int64.Type}, {"quantity", Int64.Type}}),
-				    #"Removed Columns" = Table.RemoveColumns(#"Changed Type",{"Source.Name"})
+				    #"Expanded Transform File" = Table.ExpandTableColumn(#"Removed Other Columns1", "Transform File", {"transaction_date", "stock_date", "product_id", "customer_id", "store_id", "quantity"}, {"Transform File.transaction_date", "Transform File.stock_date", "Transform File.product_id", "Transform File.customer_id", "Transform File.store_id", "Transform File.quantity"}),
+				    #"Changed Type with Locale" = Table.TransformColumnTypes(#"Expanded Transform File", {{"Transform File.stock_date", type date}}, "en-GB"),
+				    #"Changed Type with Locale1" = Table.TransformColumnTypes(#"Changed Type with Locale", {{"Transform File.transaction_date", type date}}, "en-GB"),
+				    #"Renamed Columns" = Table.RenameColumns(#"Changed Type with Locale1",{{"Transform File.transaction_date", "Transaction_date"}, {"Transform File.stock_date", "Stock_date"}, {"Transform File.product_id", "Product_id"}, {"Transform File.customer_id", "Customer_id"}}),
+				    #"Changed Type" = Table.TransformColumnTypes(#"Renamed Columns",{{"Customer_id", type text}, {"Product_id", type text}}),
+				    #"Renamed Columns2" = Table.RenameColumns(#"Changed Type",{{"Transform File.store_id", "Store_id"}}),
+				    #"Changed Type1" = Table.TransformColumnTypes(#"Renamed Columns2",{{"Store_id", type text}}),
+				    #"Renamed Columns3" = Table.RenameColumns(#"Changed Type1",{{"Transform File.quantity", "File.quantity"}}),
+				    #"Changed Type2" = Table.TransformColumnTypes(#"Renamed Columns3",{{"File.quantity", type number}})
 				in
-				    #"Removed Columns"
+				    #"Changed Type2"
 
 	annotation PBI_NavigationStepName = Navigation
 

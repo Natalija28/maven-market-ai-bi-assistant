@@ -27,13 +27,9 @@ ref table Products
 ref table Stores
 ref table Regions
 ref table Calendar
-ref table DateTableTemplate_699142f6-5cd4-4e10-922e-1e75089b5e59
-ref table LocalDateTable_6a1624bb-eb54-4587-9c99-152505c61a07
-ref table LocalDateTable_f5932301-3275-4261-8349-37afc5ae35a7
-ref table LocalDateTable_4dde7c04-65d4-4d63-bdce-6c03be865e7a
 ref table Return_Data
 ref table 'Transaction Data'
-ref table LocalDateTable_c713703e-220f-4910-9a53-ffa138e4836a
+ref table 'Executive KPI'
 
 ref cultureInfo en-US
 

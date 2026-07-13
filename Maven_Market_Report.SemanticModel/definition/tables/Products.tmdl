@@ -6,8 +6,7 @@ table Products
 		lineageTag: c8f42472-90bf-4970-bcd8-5240c34803f8
 
 	column product_id
-		dataType: int64
-		formatString: 0
+		dataType: string
 		lineageTag: 1a0da7a6-d55c-4332-b2cb-5d74ac6af352
 		summarizeBy: none
 		sourceColumn: product_id
@@ -91,7 +90,7 @@ table Products
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
 	column discount_price
-		dataType: decimal
+		dataType: double
 		formatString: "£"#,0.###############;-"£"#,0.###############;"£"#,0.###############
 		lineageTag: 3c0ffac3-9c12-4671-94e8-db270acc8807
 		summarizeBy: sum
@@ -102,7 +101,7 @@ table Products
 		annotation PBI_FormatHint = {"currencyCulture":"en-GB"}
 
 	column Round
-		dataType: decimal
+		dataType: double
 		formatString: "£"#,0.###############;-"£"#,0.###############;"£"#,0.###############
 		lineageTag: 1199bf6e-f48e-4e85-bd41-4c74db7071ca
 		summarizeBy: sum
@@ -127,16 +126,17 @@ table Products
 		mode: import
 		source =
 				let
-				    Source = Csv.Document(File.Contents("C:\Users\NatalijaSuharevska\OneDrive - Direct Medics Ltd\Desktop\Power BI_Dev_Maven Market\MavenMarket_Products.csv"),[Delimiter=",", Columns=9, Encoding=1252, QuoteStyle=QuoteStyle.None]),
+				    Source = Csv.Document(File.Contents("C:\AI-PowerBI-Lab_NS\Projects\Maven Market\MavenMarket_Products.csv"),[Delimiter=",", Columns=9, Encoding=1252, QuoteStyle=QuoteStyle.None]),
 				    #"Promoted Headers" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
 				    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"product_id", Int64.Type}, {"product_brand", type text}, {"product_name", type text}, {"product_sku", type text}, {"product_retail_price", type number}, {"product_cost", type number}, {"product_weight", type number}, {"recyclable", Int64.Type}, {"low_fat", Int64.Type}}),
 				    #"Added Custom" = Table.AddColumn(#"Changed Type", "discount_price", each [product_retail_price]*0.90),
 				    #"Changed Type1" = Table.TransformColumnTypes(#"Added Custom",{{"discount_price", Currency.Type}}),
 				    #"Inserted Rounding" = Table.AddColumn(#"Changed Type1", "Round", each Number.Round([discount_price], 2), Currency.Type),
 				    #"Replaced Value" = Table.ReplaceValue(#"Inserted Rounding",null,0,Replacer.ReplaceValue,{"low_fat"}),
-				    #"Replaced Value1" = Table.ReplaceValue(#"Replaced Value",null,0,Replacer.ReplaceValue,{"recyclable"})
+				    #"Replaced Value1" = Table.ReplaceValue(#"Replaced Value",null,0,Replacer.ReplaceValue,{"recyclable"}),
+				    #"Changed Type2" = Table.TransformColumnTypes(#"Replaced Value1",{{"product_id", type text}, {"discount_price", type number}, {"Round", type number}})
 				in
-				    #"Replaced Value1"
+				    #"Changed Type2"
 
 	annotation PBI_NavigationStepName = Navigation
 

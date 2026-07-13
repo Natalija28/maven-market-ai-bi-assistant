@@ -2,8 +2,7 @@ table Customers
 	lineageTag: c688ecd9-a297-453b-90a7-f51f935f6ba9
 
 	column customer_id
-		dataType: int64
-		formatString: 0
+		dataType: string
 		lineageTag: 6b3de54a-25ba-477c-a6a0-9b07ab8aa7cc
 		summarizeBy: none
 		sourceColumn: customer_id
@@ -217,16 +216,17 @@ table Customers
 		mode: import
 		source =
 				let
-				    Source = Csv.Document(File.Contents("C:\Users\NatalijaSuharevska\OneDrive - Direct Medics Ltd\Desktop\Power BI_Dev_Maven Market\MavenMarket_Customers.csv"),[Delimiter=",", Columns=20, Encoding=1252, QuoteStyle=QuoteStyle.None]),
+				    Source = Csv.Document(File.Contents("C:\AI-PowerBI-Lab_NS\Projects\Maven Market\MavenMarket_Customers.csv"),[Delimiter=",", Columns=20, Encoding=1252, QuoteStyle=QuoteStyle.None]),
 				    #"Promoted Headers" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
 				    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"customer_id", Int64.Type}, {"customer_acct_num", type text}, {"first_name", type text}, {"last_name", type text}, {"customer_address", type text}, {"customer_city", type text}, {"customer_state_province", type text}, {"customer_postal_code", type text}, {"customer_country", type text}, {"birthdate", type text}, {"marital_status", type text}, {"yearly_income", type text}, {"gender", type text}, {"total_children", Int64.Type}, {"num_children_at_home", Int64.Type}, {"education", type text}, {"acct_open_date", type text}, {"member_card", type text}, {"occupation", type text}, {"homeowner", type text}}),
 				    #"Inserted Merged Column" = Table.AddColumn(#"Changed Type", "Full Name", each Text.Combine({[first_name], " ", [last_name]}), type text),
 				    #"Renamed Columns" = Table.RenameColumns(#"Inserted Merged Column",{{"Full Name", "full_name"}}),
 				    #"Inserted Text After Delimiter" = Table.AddColumn(#"Renamed Columns", "birth_year", each Text.AfterDelimiter([birthdate], "/", 1), type text),
 				    #"Added Conditional Column" = Table.AddColumn(#"Inserted Text After Delimiter", "has_children", each if [total_children] = 0 then "N" else "Y"),
-				    #"Renamed Columns1" = Table.RenameColumns(#"Added Conditional Column",{{"customer_city", "city"}, {"customer_postal_code", "postal_code"}, {"customer_country", "country/region"}})
+				    #"Renamed Columns1" = Table.RenameColumns(#"Added Conditional Column",{{"customer_city", "city"}, {"customer_postal_code", "postal_code"}, {"customer_country", "country/region"}}),
+				    #"Changed Type1" = Table.TransformColumnTypes(#"Renamed Columns1",{{"customer_id", type text}})
 				in
-				    #"Renamed Columns1"
+				    #"Changed Type1"
 
 	annotation PBI_NavigationStepName = Navigation
 

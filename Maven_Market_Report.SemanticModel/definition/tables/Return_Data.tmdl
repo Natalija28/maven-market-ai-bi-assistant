@@ -25,8 +25,7 @@ table Return_Data
 
 	column return_date
 		dataType: dateTime
-		isHidden
-		formatString: d/m/yyyy
+		formatString: Long Date
 		lineageTag: 18c9116b-8a25-4737-add5-838e1b8ebdf8
 		summarizeBy: none
 		sourceColumn: return_date
@@ -37,12 +36,8 @@ table Return_Data
 
 		annotation UnderlyingDateTimeDataType = Date
 
-		annotation PBI_FormatHint = {"isCustom":true}
-
 	column product_id
-		dataType: int64
-		isHidden
-		formatString: 0
+		dataType: string
 		lineageTag: 566b13e8-96cc-4fde-ab76-f8db39842e4a
 		summarizeBy: none
 		sourceColumn: product_id
@@ -52,9 +47,7 @@ table Return_Data
 		annotation SummarizationSetBy = Automatic
 
 	column store_id
-		dataType: int64
-		isHidden
-		formatString: 0
+		dataType: string
 		lineageTag: 5774a664-217c-480f-aebc-cfc5dff3ed67
 		summarizeBy: none
 		sourceColumn: store_id
@@ -64,10 +57,9 @@ table Return_Data
 		annotation SummarizationSetBy = Automatic
 
 	column quantity
-		dataType: int64
-		formatString: 0
+		dataType: string
 		lineageTag: c58aab8b-d234-4770-8aa6-edd773d545e9
-		summarizeBy: sum
+		summarizeBy: none
 		sourceColumn: quantity
 
 		annotation SummarizationSetBy = Automatic
@@ -76,11 +68,11 @@ table Return_Data
 		mode: import
 		source =
 				let
-				    Source = Csv.Document(File.Contents("C:\Users\NatalijaSuharevska\OneDrive - Direct Medics Ltd\Desktop\Power BI_Dev_Maven Market\MavenMarket_Returns_1997-1998.csv"),[Delimiter=",", Columns=4, Encoding=1252, QuoteStyle=QuoteStyle.None]),
+				    Source = Csv.Document(File.Contents("C:\AI-PowerBI-Lab_NS\Projects\Maven Market\MavenMarket_Returns_2025-2026.csv"),[Delimiter=",", Columns=4, Encoding=1252, QuoteStyle=QuoteStyle.None]),
 				    #"Promoted Headers" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
-				    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"return_date", type date}, {"product_id", Int64.Type}, {"store_id", Int64.Type}, {"quantity", Int64.Type}})
+				    #"Changed Type with Locale" = Table.TransformColumnTypes(#"Promoted Headers", {{"return_date", type date}}, "en-GB")
 				in
-				    #"Changed Type"
+				    #"Changed Type with Locale"
 
 	annotation PBI_NavigationStepName = Navigation
 

@@ -1,0 +1,68 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/1.7.0/schema.json",
+  "name": "825b84a0798a9164f86e",
+  "position": {
+    "x": 0,
+    "y": 571.656065254808,
+    "z": 8000,
+    "height": 148.66122876599567,
+    "width": 347.89792711217541,
+    "tabOrder": 8000
+  },
+  "visual": {
+    "visualType": "textbox",
+    "objects": {
+      "general": [
+        {
+          "properties": {
+            "paragraphs": [
+              {
+                "textRuns": [
+                  {
+                    "value": "Dashboard provides:"
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "KPIs"
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "Trends"
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "Geography"
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "product Performance"
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "Executive commentary"
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

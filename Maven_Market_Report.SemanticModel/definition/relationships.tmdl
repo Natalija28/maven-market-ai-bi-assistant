@@ -1,34 +1,3 @@
-relationship ee4fe129-e504-4969-b5de-aad138963597
-	joinOnDateBehavior: datePartOnly
-	fromColumn: Calendar.'Start of Week'
-	toColumn: LocalDateTable_6a1624bb-eb54-4587-9c99-152505c61a07.Date
-
-relationship 1a08c0be-1e51-45e4-bbda-8edb90f7d461
-	joinOnDateBehavior: datePartOnly
-	fromColumn: Calendar.'Start of Month'
-	toColumn: LocalDateTable_f5932301-3275-4261-8349-37afc5ae35a7.Date
-
-relationship 5bce1bfd-2633-41d2-84b9-ded54429c88a
-	joinOnDateBehavior: datePartOnly
-	fromColumn: Calendar.date
-	toColumn: LocalDateTable_4dde7c04-65d4-4d63-bdce-6c03be865e7a.Date
-
-relationship d8411899-fb72-07a6-695a-731816f9d9bb
-	fromColumn: 'Transaction Data'.customer_id
-	toColumn: Customers.customer_id
-
-relationship b1a86f98-0436-4d0c-2259-d4a428d5462c
-	fromColumn: 'Transaction Data'.product_id
-	toColumn: Products.product_id
-
-relationship 5724a302-8a0d-018e-2ace-8b89d2b178e7
-	fromColumn: 'Transaction Data'.store_id
-	toColumn: Stores.store_id
-
-relationship aebd0e2e-1c02-b85f-80ad-b382331200bb
-	fromColumn: 'Transaction Data'.stock_date
-	toColumn: Calendar.date
-
 relationship 26518750-f0f5-fe67-9d72-f0d8f523ae88
 	fromColumn: Return_Data.product_id
 	toColumn: Products.product_id
@@ -45,13 +14,24 @@ relationship b12f64a2-405a-b032-a8d2-c9a49408dc17
 	fromColumn: Stores.region_id
 	toColumn: Regions.region_id
 
-relationship eb273370-5877-8a0f-a8fb-bbbd86245462
-	isActive: false
-	fromColumn: 'Transaction Data'.transaction_date
+relationship 27a8f836-f453-d96f-021b-983fab5b9d9f
+	fromColumn: 'Transaction Data'.Customer_id
+	toColumn: Customers.customer_id
+
+relationship db2e09fa-51ad-99ee-ab47-a6e0cecf4b82
+	fromColumn: 'Transaction Data'.Store_id
+	toColumn: Stores.store_id
+
+relationship 597ba008-9584-a349-5a67-1561808b7d23
+	fromColumn: 'Transaction Data'.Stock_date
 	toColumn: Calendar.date
 
-relationship d82eb98d-0578-4c60-b1d0-4ac5938354cf
-	joinOnDateBehavior: datePartOnly
-	fromColumn: Calendar.'End of Month'
-	toColumn: LocalDateTable_c713703e-220f-4910-9a53-ffa138e4836a.Date
+relationship b7f8c5d5-d900-586a-25c5-d78ef12d71a0
+	isActive: false
+	fromColumn: 'Transaction Data'.Transaction_date
+	toColumn: Calendar.date
+
+relationship 2a037e33-53bb-2f56-1fe0-f325f42f52ff
+	fromColumn: 'Transaction Data'.Product_id
+	toColumn: Products.product_id
 
