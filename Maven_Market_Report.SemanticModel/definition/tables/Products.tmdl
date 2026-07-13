@@ -41,7 +41,7 @@ table Products
 		dataType: double
 		formatString: \$#,0.00;(\$#,0.00);\$#,0.00
 		lineageTag: 616e495f-0d59-4a12-9776-7b618bb56c7c
-		summarizeBy: sum
+		summarizeBy: none
 		sourceColumn: product_retail_price
 
 		annotation SummarizationSetBy = Automatic
@@ -52,7 +52,7 @@ table Products
 		dataType: double
 		formatString: \$#,0.00;(\$#,0.00);\$#,0.00
 		lineageTag: 86908338-63c9-4aa5-84c0-778c9a3140f5
-		summarizeBy: sum
+		summarizeBy: none
 		sourceColumn: product_cost
 
 		annotation SummarizationSetBy = Automatic
@@ -62,7 +62,7 @@ table Products
 	column product_weight
 		dataType: double
 		lineageTag: a0cdf790-2494-4495-8334-ed07c5f63c91
-		summarizeBy: sum
+		summarizeBy: none
 		sourceColumn: product_weight
 
 		annotation SummarizationSetBy = Automatic
@@ -72,7 +72,7 @@ table Products
 	column recyclable
 		dataType: double
 		lineageTag: 8918bdd7-a11f-4069-aecf-01b5c010ebfe
-		summarizeBy: sum
+		summarizeBy: none
 		sourceColumn: recyclable
 
 		annotation SummarizationSetBy = Automatic
@@ -82,7 +82,7 @@ table Products
 	column low_fat
 		dataType: double
 		lineageTag: 67804a2c-a63f-4197-aaec-6a9e74e79bff
-		summarizeBy: sum
+		summarizeBy: none
 		sourceColumn: low_fat
 
 		annotation SummarizationSetBy = Automatic
@@ -93,7 +93,7 @@ table Products
 		dataType: double
 		formatString: "£"#,0.###############;-"£"#,0.###############;"£"#,0.###############
 		lineageTag: 3c0ffac3-9c12-4671-94e8-db270acc8807
-		summarizeBy: sum
+		summarizeBy: none
 		sourceColumn: discount_price
 
 		annotation SummarizationSetBy = Automatic
@@ -104,7 +104,7 @@ table Products
 		dataType: double
 		formatString: "£"#,0.###############;-"£"#,0.###############;"£"#,0.###############
 		lineageTag: 1199bf6e-f48e-4e85-bd41-4c74db7071ca
-		summarizeBy: sum
+		summarizeBy: none
 		sourceColumn: Round
 
 		annotation SummarizationSetBy = Automatic

@@ -42,8 +42,7 @@ table 'Executive KPI'
 				{
 				    ("Total Revenue", NAMEOF('Transaction Data'[Total Revenue]), 0),
 				    ("Total Profit", NAMEOF('Transaction Data'[Total Profit]), 1),
-				    ("Profit Margin", NAMEOF('Transaction Data'[Profit Margin]), 2),
-				    ("Total Transactions", NAMEOF('Transaction Data'[Total Transactions]), 3)
+				    ("Profit Margin", NAMEOF('Transaction Data'[Profit Margin]), 2)
 				}
 
 	annotation PBI_Id = 3aef82a6785b46bab0fb8bfc90600b38

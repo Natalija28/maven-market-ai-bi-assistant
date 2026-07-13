@@ -57,7 +57,29 @@ table 'Transaction Data'
 		formatString: #,0
 		lineageTag: 340bde0c-753e-4381-83a4-eeb7b6619e31
 
-	measure 'Last Month Revenue' = CALCULATE([Total Revenue], DATEADD('Calendar'[date],-1,MONTH))
+	measure 'Last Month Revenue' = ```
+			
+			VAR LastDataDate =
+			    CALCULATE(
+			        MAX('Transaction Data'[transaction_date]),
+			        REMOVEFILTERS('Calendar')
+			    )
+			VAR PreviousMonthStart =
+			    EOMONTH(LastDataDate, -2) + 1
+			VAR PreviousMonthEnd =
+			    EOMONTH(LastDataDate, -1)
+			RETURN
+			    CALCULATE(
+			        [Total Revenue],
+			        REMOVEFILTERS('Calendar'),
+			        DATESBETWEEN(
+			            'Calendar'[date],
+			            PreviousMonthStart,
+			            PreviousMonthEnd
+			        )
+			    )
+			
+			```
 		formatString: \$#,0;(\$#,0);\$#,0
 		lineageTag: d39d062d-d83b-4120-b114-d8cd856fa1e0
 
@@ -129,19 +151,6 @@ table 'Transaction Data'
 
 		annotation PBI_FormatHint = {"isDateTimeCustom":true}
 
-	column Stock_date
-		dataType: dateTime
-		formatString: dd/mm/yy
-		lineageTag: 58f5130e-ff02-4dff-837f-ff8abb0bd03b
-		summarizeBy: none
-		sourceColumn: Stock_date
-
-		annotation SummarizationSetBy = Automatic
-
-		annotation UnderlyingDateTimeDataType = Date
-
-		annotation PBI_FormatHint = {"isDateTimeCustom":true}
-
 	column Product_id
 		dataType: string
 		lineageTag: ed251080-5dba-4357-9b18-d882c164a59b
@@ -193,9 +202,10 @@ table 'Transaction Data'
 				    #"Renamed Columns2" = Table.RenameColumns(#"Changed Type",{{"Transform File.store_id", "Store_id"}}),
 				    #"Changed Type1" = Table.TransformColumnTypes(#"Renamed Columns2",{{"Store_id", type text}}),
 				    #"Renamed Columns3" = Table.RenameColumns(#"Changed Type1",{{"Transform File.quantity", "File.quantity"}}),
-				    #"Changed Type2" = Table.TransformColumnTypes(#"Renamed Columns3",{{"File.quantity", type number}})
+				    #"Changed Type2" = Table.TransformColumnTypes(#"Renamed Columns3",{{"File.quantity", type number}}),
+				    #"Removed Columns" = Table.RemoveColumns(#"Changed Type2",{"Stock_date"})
 				in
-				    #"Changed Type2"
+				    #"Removed Columns"
 
 	annotation PBI_NavigationStepName = Navigation
 

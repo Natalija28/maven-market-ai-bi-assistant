@@ -14,7 +14,7 @@ queryGroup 'Transform File from MavenMarket Transactions\Helper Queries'
 
 	annotation PBI_QueryGroupOrder = 0
 
-annotation PBI_QueryOrder = ["Customers","Products","Stores","Regions","Calendar","Return_Data","Transaction Data","Sample File","Parameter1","Transform Sample File","Transform File"]
+annotation PBI_QueryOrder = ["Customers","Products","Stores","Regions","Calendar","Transaction Data","Sample File","Parameter1","Transform Sample File","Transform File"]
 
 annotation __PBI_TimeIntelligenceEnabled = 1
 
@@ -27,7 +27,6 @@ ref table Products
 ref table Stores
 ref table Regions
 ref table Calendar
-ref table Return_Data
 ref table 'Transaction Data'
 ref table 'Executive KPI'
 

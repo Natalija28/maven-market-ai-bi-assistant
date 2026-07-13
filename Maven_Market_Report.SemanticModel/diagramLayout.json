@@ -75,19 +75,6 @@
         },
         {
           "location": {
-            "x": 864.82218254937061,
-            "y": 367.88888888888886
-          },
-          "nodeIndex": "Return_Data",
-          "nodeLineageTag": "751dd654-81ea-428d-819a-c695fe24293d",
-          "size": {
-            "height": 176,
-            "width": 234
-          },
-          "zIndex": 3
-        },
-        {
-          "location": {
             "x": 106.55555555555549,
             "y": 371.11111111111109
           },
@@ -98,6 +85,19 @@
             "width": 234
           },
           "zIndex": 7
+        },
+        {
+          "location": {
+            "x": 1328.5079365079364,
+            "y": 599.91269841269832
+          },
+          "nodeIndex": "Executive KPI",
+          "nodeLineageTag": "128c81f4-1644-4457-a583-716a6535d226",
+          "size": {
+            "height": 152,
+            "width": 234
+          },
+          "zIndex": 0
         }
       ],
       "name": "All tables",

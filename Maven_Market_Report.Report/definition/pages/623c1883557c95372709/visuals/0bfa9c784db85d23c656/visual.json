@@ -19,22 +19,10 @@
               {
                 "textRuns": [
                   {
-                    "value": "Executive Performance Dashboard",
+                    "value": "Executive Performance Dashboard | 2025 - 2026",
                     "textStyle": {
                       "fontWeight": "bold",
                       "fontSize": "16pt"
-                    }
-                  }
-                ],
-                "horizontalTextAlignment": "center"
-              },
-              {
-                "textRuns": [
-                  {
-                    "value": "Finance Performance | 2025 - 2026",
-                    "textStyle": {
-                      "fontWeight": "bold",
-                      "fontSize": "9pt"
                     }
                   }
                 ],

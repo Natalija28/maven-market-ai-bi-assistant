@@ -50,7 +50,7 @@ table Calendar
 		dataType: int64
 		formatString: 0
 		lineageTag: 7a4856b6-424a-4500-998d-4860ed8e8a14
-		summarizeBy: sum
+		summarizeBy: none
 		sourceColumn: Quarter
 
 		annotation SummarizationSetBy = Automatic
@@ -107,14 +107,26 @@ table Calendar
 	column 'Month Number' = MONTH('Calendar'[date])
 		formatString: 0
 		lineageTag: 2dd90084-28c9-4b79-85ce-8484ef90feaa
-		summarizeBy: sum
+		summarizeBy: none
 
 		annotation SummarizationSetBy = Automatic
 
 	column Year = YEAR('Calendar'[date])
 		formatString: 0
 		lineageTag: 89c572d2-6b82-4859-9924-70041542b7e9
-		summarizeBy: sum
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column IsData = ```
+			VAR LastDataDate =
+			    CALCULATE(MAX('Transaction Data'[Transaction_date]), ALL('Transaction Data'))
+			        RETURN 
+			        IF('Calendar'[date] <= LastDataDate,1,0)
+			```
+		formatString: 0
+		lineageTag: 74b3109b-a87a-4e8a-8e15-a195d0c05076
+		summarizeBy: none
 
 		annotation SummarizationSetBy = Automatic
 
